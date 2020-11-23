@@ -1,0 +1,49 @@
+section {
+  background: #000;
+  color: #fff;
+  padding: 1em;
+  font-size: 1em;
+  font-family: "Helvetica Neue","Trebuchet MS",sans-serif;
+  text-rendering: optimizeLegibility;
+  height:100%;
+  display:block;
+  overflow:hidden;
+  width:100%
+}
+
+
+h1, h2, h3, h4 {
+  font-family: "Contrail One";
+  line-height:1.2em;
+  margin-top:0px;
+  margin-bottom:0.2em;
+}
+
+h1 {
+  font-size: 2.2em;
+  margin-top:0px;
+  line-height:1.2em;
+}
+
+h2 {
+  font-size: 1.7em;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin:0.3em;
+  text-align:center;
+}
+
+h4 {
+  font-size: 1.2em;
+  margin-bottom:0.1em;
+padding-top:0.2em;
+}
+pre {
+  font-size: 0.7em;
+line-height:1.2em;
+  margin-bottom:0.7em;
+
+}
+

@@ -1,0 +1,45 @@
+html{
+ margin:0px;
+}
+
+section {
+  background: #fff;
+  color: #000;
+  font-size: 18px;
+  font-family: "Helvetica Neue","Trebuchet MS",sans-serif;
+  text-rendering: optimizeLegibility;
+  display:block;
+  overflow:hidden;
+  width: 25cm;
+  margin:0px;
+  padding: 0.2em;
+page-break-after: always;
+  height:13cm;
+}
+
+
+h1, h2, h3, h4 {
+  font-family: "Contrail One";
+}
+
+h1 {
+  font-size: 35px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 20px;
+}
+pre {
+  font-size: 15px;
+  line-height: 17px;
+  margin-bottom: 4px;
+}
+

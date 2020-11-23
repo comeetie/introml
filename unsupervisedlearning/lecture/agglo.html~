@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+    div {
+      position: absolute;
+    }
+
+</style>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<body>
+<svg id="graph"></svg>
+<div id="controls">
+  <button onclick="step();">Step</button>
+  <p>Fusion N° : <span id="step"></span></p>
+  <p>Distance de fusion : <span id="value"></span></p>
+</div>
+<script src="http://rawgithub.com/jbeuckm/K-Means/master/build/kmeans.min.js"></script>
+
+<script src="./clusterfck-0.1.js"></script>
+<script>
+
+var width = 1700,
+    height = 850;
+
+var cluster = d3.layout.cluster()
+    .size([width-500, height-50]);
+
+var diagonal = d3.svg.diagonal()
+    .projection(function(d) { return [d.x, d.y ]; });
+
+var buildChildren=function(obj){
+	if(obj.left && obj.right){
+		obj.children = [obj.left,obj.right]
+		buildChildren(obj.left)
+		buildChildren(obj.right)
+	}
+}
+
+
+
+  var ranges = [ [2,8], [2,8] ];
+  var points = kmeans.generateRandomPoints(ranges, 500);
+  var means = [];
+
+  var clusters = clusterfck.hcluster(points, clusterfck.EUCLIDEAN_DISTANCE, clusterfck.COMPLETE_LINKAGE)
+  buildChildren(clusters[0])
+  dendoscale = d3.scale.linear().range([height-50,0]).domain([0,clusters[0].value])
+
+var frame = d3.select("#graph")
+    .attr("width", width)
+    .attr("height", height)
+
+
+
+  var graph = frame.append('g');
+  var meanLayer = graph.append('g');
+var meanLayerL = graph.append('g');
+var meanLayerR = graph.append('g');
+
+  var xScale = d3.scale.linear().domain([0,10]).range([0,500]);
+  var yScale = d3.scale.linear().domain([0,10]).range([500,0]);
+
+  var pointDots = graph.selectAll('.pointDots').data(points);
+  pointDots.enter().append('circle').attr('class','pointDots')
+      .attr('r', 2)
+      .attr('cx',function(d){ return xScale(d[0]); })
+     .attr('cy',function(d){ return yScale(d[1]); });
+
+var svg = frame.append("g")
+    .attr("transform", "translate(500,25)");
+
+
+  
+var updateNode = function(d){
+	meanLayer.selectAll("circle").remove()
+	meanLayerL.selectAll("circle").remove()
+ 	meanLayerR.selectAll("circle").remove()
+	svg.selectAll("circle").attr("r",3.5).attr("fill","#000000")
+	d3.select(this).attr("r",5)
+	d3.select(this).attr("fill","#C83737")
+        var  cnodesL = cluster.nodes(d.left);
+	meanLayerL.selectAll("circle").data(cnodesL).enter().append('circle')
+      .attr('r', 5)
+      .attr('fill',"#37C837")
+      .attr('cx',function(d){ return xScale(d.canonical[0]); })
+     .attr('cy',function(d){ return yScale(d.canonical[1]); });
+	var  cnodesR = cluster.nodes(d.right);
+	meanLayerR.selectAll("circle").data(cnodesR).enter().append('circle')
+      .attr('r', 5)
+      .attr('fill',"#3737C8")
+      .attr('cx',function(d){ return xScale(d.canonical[0]); })
+     .attr('cy',function(d){ return yScale(d.canonical[1]); });
+	var  cnodes = cluster.nodes(d);
+	meanLayer.selectAll("circle").data(cnodes).enter().append('circle')
+      .attr('r', 7)
+      .attr('fill',"#C83737")
+      .attr('cx',function(d){ return xScale(d.canonical[0]); })
+     .attr('cy',function(d){ return yScale(d.canonical[1]); });
+d3.select(".node_"+d.left.step).attr("fill","#37C837").attr("r",5)
+d3.select(".node_"+d.right.step).attr("fill","#3737C8").attr("r",5)
+}
+
+
+
+  var nodes = cluster.nodes(clusters[0]);
+
+  nodes.forEach(function(d){d.y=(d.value ? dendoscale(d.value) : dendoscale(0)) })
+  links = cluster.links(nodes);
+
+var s=450
+
+  var link = svg.selectAll(".link").append("g")
+      .data(links)
+    .enter().append("path")
+     .attr("class", function(d){return "link link_"+d.source.step})
+      .attr("d", diagonal)
+      .attr("visibility",function(d){return d.source.step > s ? "hidden" : "visible"})
+
+  var node = svg.selectAll(".node")
+      .data(nodes)
+    .enter().append("svg:circle")
+      .attr("r", 3.5)
+      .attr("cx",function(d){return d.x})
+      .attr("cy",function(d){return d.y})
+      .attr("visibility",function(d){return d.step > s  ? "hidden" : "visible"})
+      .attr("class",function(d){ return "node node_" +d.step})
+      .on("mouseover",updateNode)
+
+
+
+var drawNode = function(d){
+	meanLayerL.selectAll("circle").remove()
+ 	meanLayerR.selectAll("circle").remove()
+	meanLayer.selectAll("circle").remove()
+        var  cnodesL = cluster.nodes(d.left);
+	meanLayerL.selectAll("circle").data(cnodesL).enter().append('circle')
+      .attr('r', 5)
+      .attr('fill',"#37C837")
+      .attr('cx',function(d){ return xScale(d.canonical[0]); })
+     .attr('cy',function(d){ return yScale(d.canonical[1]); });
+	var  cnodesR = cluster.nodes(d.right);
+	meanLayerR.selectAll("circle").data(cnodesR).enter().append('circle')
+      .attr('r', 5)
+      .attr('fill',"#3737C8")
+      .attr('cx',function(d){ return xScale(d.canonical[0]); })
+     .attr('cy',function(d){ return yScale(d.canonical[1]); });
+	var  cnodes = cluster.nodes(d);
+	meanLayer.selectAll("circle").data(cnodes).enter().append('circle')
+      .attr('r', 7)
+      .attr('fill',"#C83737")
+      .attr('cx',function(d){ return xScale(d.canonical[0]); })
+     .attr('cy',function(d){ return yScale(d.canonical[1]); });
+}
+
+var step = function(){
+s=s+1;
+cn=nodes.filter(function(cn){return cn.step==s})[0]
+d3.select("#step").text(s)
+d3.select("#value").text(cn.value)
+d3.selectAll(".node").attr("fill","#000").attr("r",3.5)
+d3.select(".node_"+s).attr("visibility","visible").attr("fill","#C83737").attr("r",5)
+d3.select(".node_"+cn.left.step).attr("fill","#37C837").attr("r",5)
+d3.select(".node_"+cn.right.step).attr("fill","#3737C8").attr("r",5)
+d3.selectAll(".link_"+s).attr("visibility","visible")
+drawNode(cn)
+}
+
+step()
+
+d3.select(self.frameElement).style("height", height + "px");
+
+</script>

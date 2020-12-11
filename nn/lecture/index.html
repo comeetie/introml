@@ -27,7 +27,7 @@
 
 </head>
 <section style="text-align:center;padding-top:5em;">
-  <h1><span class="green">Neural Network introduction</span></h1></br> <h2><p class="grey">UGE,</h2>
+  <h1><span class="green">Neural Network </span></h1></br> <h2><p class="grey">UGE,</h2>
   <a href="http://www.twiter.com/comeetie">@comeetie</a>
 </section>
 
@@ -94,7 +94,7 @@ $$\mathbb{E}[R_S(f)]=R(f)$$
 
 <section>
 <h2 class="red">Empirical risk minimisation</h2>
-function $f$ is edfined by a weight vector $\color{red}{\mathbf{w}}$, 
+function $f$ is defined by a weight vector $\color{red}{\mathbf{w}}$, 
 $$f(\mathbf{x};\color{red}{\mathbf{w}})$$
 find the function $f$ (and therefore the parameters (i.e. the wiegths) $\color{red}{\mathbf{w}}$) which minimize the risk on a dataset
 $$\color{red}{\mathbf{\hat{w}}}=\arg\min_{\color{red}{\mathbf{w}}}R_{S_a}(\color{red}{\mathbf{w}})=\arg\min_{\color{red}{\mathbf{w}}}\frac{1}{n}\sum_{i=1}^nL(f(\mathbf{x}_i,\color{red}{\mathbf{w}}),y_i)$$
@@ -102,45 +102,38 @@ $$\color{red}{\mathbf{\hat{w}}}=\arg\min_{\color{red}{\mathbf{w}}}R_{S_a}(\color
 
 
 <section>
-<h1 class="green" >Apprentissage supervisé</h1>
-<h3> Ensemble d'apprentissage / Ensemble de test</h3>
-$f(\mathbf{x})=f(\mathbf{x},\color{red}{\mathbf{w}})$ peut être plus ou moins compliquée, avoir plus ou moins de degré de liberté.
-<img src="./images/biais_variance.png" height=50%>
-<span class="red"> ! a ne pas apprendre par coeur les données d'apprentissage
-</section>
-
-
-<section>
-<h1 class="green" >Un peu plus compliqué !</h1>
-<h3> Ensemble d'apprentissage / Ensemble de test</h3>
-$f(\mathbf{x})=f(\mathbf{x},\color{red}{\mathbf{w}})$ peut être plus ou moins compliquée, avoir plus ou moins de degré de liberté.
-<img src="./images/doubledescente.png" height=50%>
-<span class="red"> ! pour certains modèles (type NN)  + SGD, 2 régimes 
-</section>
-
-<section>
-<h1 class="green" >Apprentissage supervisé en pratique</h1>
-<h2 class="red"> Données :</h2>  
-Ensemble de couples $(\mathbf{x},y):\{(\mathbf{x}_1,y_1),...,(\mathbf{x}_n,y_n)\}$ divisé en plusieur parties: </br></br>
-<ul>
-<li> Ensemble d'apprentissage ($S_a$, permet de trouver $f$)
-<li> Ensemble de test ($S_t$, permet d'évaluer $f$)
-<li> Ensemble de validation ($S_v$, permet de choisir les hyper-paramètre de faire varier $\mathcal{H}$)
-</ul>
-</section>
-
-
-<section>
-<h1 class="green" >Apprentissage supervisé régularisation</h1>
+<h1 class="green" >Regularisation</h1>
 $$\hat{\mathbf{w}}=\arg\min_{\mathbf{w}}\frac{1}{n}\sum_{i=1}^nL(f(\mathbf{x}_i,\mathbf{w}),y_i)+\color{red}{\lambda}.\color{green}{\Omega(\mathbf{w})}$$
 
 <ul>
-<li> $L$ : fonction de perte
-<li> $\color{green}{\Omega}$ : est un terme de régularisation permettant de controler la capacité du modèle
-<li> $\color{red}{\lambda}$ : hyper-paramètre controlant le degré de régularisation  
+<li> $L$ : floss function
+<li> $\color{green}{\Omega}$ : regularisation terms mesure the complexity of the model
+<li> $\color{red}{\lambda}$ : hyper-parameter that define the amount of regularisation
 </ul>
 
 </section>
+
+
+<section>
+<h1 class="green" >Trainning set / testing set</h1>
+<h3> double descent</h3>
+$f(\mathbf{x})=f(\mathbf{x},\color{red}{\mathbf{w}})$ more parameters 
+<img src="./images/doubledescente.png" height=50%>
+<span class="red"> ! for some models like  (NN)  + optimization with SGD like algorithm, 2 regimes 
+</section>
+
+<section>
+<h1 class="green" >Supervised learning in practive</h1>
+<h2 class="red"> Data :</h2>  
+ $(\mathbf{x},y):\{(\mathbf{x}_1,y_1),...,(\mathbf{x}_n,y_n)\}$ splited in several parts: </br></br>
+<ul>
+<li> training set ($S_a$, allow to find $f$)
+<li> validation set ($S_v$, allow to compare models /architecture and set the hyper-parameters $\mathcal{H}$)
+<li> test set ($S_t$, final evaluation of $f$)
+</ul>
+</section>
+
+
 
 
 <section style="padding-top:5em;text-align:center">
@@ -161,18 +154,18 @@ $$\hat{\mathbf{w}}=\arg\min_{\mathbf{w}}\frac{1}{n}\sum_{i=1}^nL(f(\mathbf{x}_i,
 <li>1974 : Gradient back-propagation (Werbos, pas de difusion) 
 <li> 1986 : Gradient back-propagation bis (Rumelhart & McClelland, Lecun)
 <ul>
-<li> Nouvelles architectures CNN
-<li> Nouvelles applications (Character recognition, Speech recognition and synthesis, Vision (image processing) CNN
+<li> New architecture Convolutional NN
+<li> New applications (Character recognition, Speech recognition and synthesis, Vision (image processing) CNN
 </ul>
 <li> 1997 : LSTM (Hochreiter & Schmidhuber) 
 <li> 2005 : Deep networks (Hinton & Salakhutdinov, 2006)
-<li> 2010 : auto-differentiation (Theano, Bengio & al)
+<li> 2010 : auto-diff (Theano, Bengio & al)
 <li> 2014 : Generative Adversarial Networks, GAN (Goodfellow & al)
 </ul>
 </section>
 
 <section>
-<h1 class="green" >Neuronne formel ?</h1>
+<h1 class="green" >Formal Neuron ?</h1>
 
 McCulloch, W. S., Pitts, W., A Logical Calculus of the Ideas Immanent in Nervous Activity, Bulletin of Mathematical Biophysics, vol. 5, pp. 115-133, 1943.
 
@@ -180,56 +173,55 @@ $$\mathbb{R}^p\rightarrow\mathbb{R}$$
 
 $$s=\Phi(\mathbf{x}^t\mathbf{w}+b)$$
 
-Transformation linéaire suivie d'une transformation non-linéaire $\Phi$ :
+linear transformation followed by a non linear transform $\Phi$ :
 <ul>
-  <li> signaux d'entrées : $[x_1,...x_p]$ </li>
-  <li> poids  : $[w_1,...,w_p]$ et biais : $b$ (mémoire)</li>
-  <li> fonction d'activation : $\Phi$</li>
-  <li> signal de sortie : $s$ </li>
+  <li> inputs : $[x_1,...x_p]$ </li>
+  <li> weights  : $[w_1,...,w_p]$ et biais : $b$ (memory)</li>
+  <li> activation function : $\Phi$</li>
+  <li> output : $s$ </li>
 </ul>
 
-<h3 class="red"> Brique de base pour construire des réseau</h3>
+<h3 class="red"> building block of neural network</h3>
 
 </section>
 
 <section >
-<h1 class="green" >Neuronne formel ?</h1>
+<h1 class="green" >Formal neuron ?</h1>
 
 
 $$\Phi(\mathbf{w}^t\mathbf{x}+b)$$
 
-Transformation linéaire suivie d'une transformation non-linéaire $\Phi$ :
+linear transformation followed by a non linear transform $\Phi$ :
 <ul>
-  <li> tangente hyperbolique $\Phi(x)$ : $tanh(x)$ </li>
+  <li> hyperbolique tangente $\Phi(x)$ : $tanh(x)$ </li>
   <li> sigmoid $\Phi(x)$ : $1/(1+\exp(- x))$</li>
   <li> relu $\Phi(x)$ : $max(0,x)$</li>
   <li> ...
   <li> softmax (vectorielle) : $\Phi(\mathbf{x})$ : $[\frac{\exp(\mathbf{x}_1)}{\sum_{k=1}^K\exp(\mathbf{x}_k)},...,\frac{\exp(\mathbf{x}_K)}{\sum_k={1^K}\exp(\mathbf{x}_k)}]$ </li>
 </ul>
-
-<h3 class="red"> Brique de base pour construire des réseaux</h3>
+<h3 class="red"> building block of neural network</h3>
 
 </section> 
 
 
 <section >
-<h1 class="green" >Fonction d'activation</h1>
+<h1 class="green" >Activation</h1>
 
 
-<h3 class="red"> Tangeante hyperbolique </h3>
+<h3 class="red"> Hyperbolic Tangeante </h3>
 <img src="./images/Activation_tanh.svg" height="50%"></img>
 
 </section> 
 
 <section >
-<h1 class="green" >Fonction d'activation</h1>
+<h1 class="green" >Activation</h1>
 
-<h3 class="red"> Sigmoide </h3><img src="./images/Activation_logistic.svg" height="50%"></img>
+<h3 class="red"> Sigmoid </h3><img src="./images/Activation_logistic.svg" height="50%"></img>
 
 </section> 
 
 <section >
-<h1 class="green" >Fonction d'activation</h1>
+<h1 class="green" >Activation</h1>
 
 
 </h3><h3 class="red"> ReLu </h3>
@@ -241,15 +233,15 @@ Transformation linéaire suivie d'une transformation non-linéaire $\Phi$ :
 
 <section >
 
-<h1 class="green" >Apprentissage supervisé</h1>
-Perceptron Multi-couche. Agencement des neurones en couches des <span class="red">entrées $\mathbf{x}$</span> aux <span class="green">sorties $\mathbf{y}$</span>
+<h1 class="green" >MLP</h1>
+Multi-layer perceptron. neurones are arranged in layers from <span class="red">inputs $\mathbf{x}$</span> to <span class="green">outputs $\mathbf{y}$</span>
 <img src="./images/Colored_neural_network.svg" height="40%"></img>
-Ensemble des poids : $\mathbf{W} = [(\mathbf{w}^1,b^1)...,(\mathbf{w}^M,b^m)]$
+Network Weights: $\mathbf{W} = [(\mathbf{w}^1,b^1)...,(\mathbf{w}^M,b^m)]$
 </section>
 
 <section >
 <h1 class="green" >MLP</h1>
-Perceptron Multi-couche. Agencement des neurones en couches des <span class="red">entrées $\mathbf{x}$</span> aux <span class="green">sorties $\mathbf{y}$</span>
+Multi-layer perceptron. neurones are arranged in layers from <span class="red">inputs $\mathbf{x}$</span> to <span class="green">outputs $\mathbf{y}$</span>
 <img src="./images/Colored_neural_network.svg" height="40%"></img>
 $$G(\mathbf{x},\mathbf{W})_r=\Phi^2(b_r^2+\sum_{q=1}^Qw_{rq}^2\Phi^1(b_q^1+\sum_{p=1}^Pw_{qp}^1x_{p}))$$
 </section>
@@ -257,21 +249,21 @@ $$G(\mathbf{x},\mathbf{W})_r=\Phi^2(b_r^2+\sum_{q=1}^Qw_{rq}^2\Phi^1(b_q^1+\sum_
 
 <section >
 <h1 class="green" >MLP</h1>
-Perceptron Multi-couche. Agencement des neurones en couches des <span class="red">entrées $\mathbf{x}$</span> aux <span class="green">sorties $\mathbf{y}$</span>
+Multi-layer perceptron. neurones are arranged in layers from <span class="red">inputs $\mathbf{x}$</span> to <span class="green">outputs $\mathbf{y}$</span>
 <img src="./images/Colored_neural_network.svg" height="40%"></img>
 $$G(\mathbf{x},\mathbf{W})=\Phi^2(\mathbf{W}^2\Phi^1(\mathbf{W}^1x))$$
 </section>
 
 <section >
 <h1 class="green" >MLP</h1>
-Perceptron Multi-couche. Agencement des neurones en couches des <span class="red">entrées $\mathbf{x}$</span> aux <span class="green">sorties $\mathbf{y}$</span>
+Multi-layer perceptron. neurones are arranged in layers from <span class="red">inputs $\mathbf{x}$</span> to <span class="green">outputs $\mathbf{y}$</span>
 <img src="./images/Colored_neural_network_2.svg" height="40%"></img>
 $$G(\mathbf{x},\mathbf{W})_r=\Phi^3(b_r^3+\sum_{q=1}^Qw_{rq}^3\Phi^2(b_r^2+\sum_{q=1}^Qw_{rq}^2\Phi^1(b_q^1+\sum_{p=1}^Pw_{qp}^1x_{p})))$$
 </section>
 
 <section >
 <h1 class="green" >MLP</h1>
-Perceptron Multi-couche. Agencement des neurones en couches des <span class="red">entrées $\mathbf{x}$</span> aux <span class="green">sorties $\mathbf{y}$</span>
+Multi-layer perceptron. neurones are arranged in layers from <span class="red">inputs $\mathbf{x}$</span> to <span class="green">outputs $\mathbf{y}$</span>
 <img src="./images/Colored_neural_network_2.svg" height="40%"></img>
 $$G(\mathbf{x},\mathbf{W})=\Phi^3(\mathbf{W}^3\Phi^2(\mathbf{W}^2\Phi^1(\mathbf{W}^1x)))$$
 </section>
@@ -279,40 +271,42 @@ $$G(\mathbf{x},\mathbf{W})=\Phi^3(\mathbf{W}^3\Phi^2(\mathbf{W}^2\Phi^1(\mathbf{
 
 
 <section >
+<h1 class="green" >MLP</h1>
 
-<h1 class="green" >Réseau : Perceptron Multi-couche</h1>
 <span class="red">Architecture :</span>
 <ul>
-<li> Nombre de couches 
-<li> Taille des couches
-<li> Type de fonction d'activation
-<li> Régularisation
-<li> <span class="red">Fonction de  perte</span>
+<li> Number of layer 
+<li> Width of the layers
+<li> Activation function
+<li> Regularisation
+<li> <span class="red">Loss function </span>
 <ul>
 <li> Regression : mse $L=\sum_{i=1}^N||G(\mathbf{x}_i)-y_i||^2$, mae $L=\sum_{i=1}^N|G(\mathbf{x}_i)-y_i|$ 
 <li> Classification : cce $L=-\sum_{i=1}^N(y_i\log(G(\mathbf{x}_i))+(1-y_i)log(1-G(\mathbf{x}_i)))$
 </ul>
-<li>Dernière couche activation 
+<li>Last layer
 <ul>
-<li> Regression : lineaire
-<li> Classification : sigmoid (binaire), soft-max (mulitclass) 
+<li> Regression : linear
+<li> Classification : sigmoid (binary), soft-max (mulitclass) 
 <ul>
 </section>
 
 <section >
 
-<h1 class="green" >Réseau : Perceptron Multi-couche</h1>
-<h3 class="red">Apprentissage</h3>
+<h1 class="green" >MLP</h1>
+<h3 class="red">Learning</h3>
 <ul>
-<li> Optimisation des poids pour minimiser $L(G(\mathbf{x},\mathbf{w}),y))$ sur un jeu de données d'apprentissage$\{(x_1,y_1),...,(x_n,y_n)\}$
-<li> Descente de gradient stochastique
-<li> Calcul du gradient par retropopagation // derivées des fonctions composées 
+<li> weights  optimization to minimize $L(G(\mathbf{x},\mathbf{w}),y))$ for a given training set $\{(x_1,y_1),...,(x_n,y_n)\}$
+<li> Stochastic gradient descent
+<li> gradients $[\frac{\delta L(\mathbf{w})}{\delta W_{11}}, ..., \frac{\delta L(\mathbf{w})}{\delta W_{ld}}]$ can be efficiently computed thanks to the chain rule : 
 $$f(g(x))'=f'(g(x))g'(x)$$
+i.e. Back-propagation
 </ul>
 </section>
 
 <section >
-<h3>Descente de gradient, règle de mise a jour :</h3>
+<h3>Gradient descent</h3>
+update formula :
 $$\mathbf{w} \leftarrow \mathbf{w}-\color{red}\lambda\frac{\delta L(\mathbf{w})}{\delta \mathbf{w}}$$
 <img src="./images/gradient.png" height="65%"></img>
 </section>
@@ -320,32 +314,38 @@ $$\mathbf{w} \leftarrow \mathbf{w}-\color{red}\lambda\frac{\delta L(\mathbf{w})}
 
 <section >
 
-<h3>Descente de gradient, règle de mise a jour :</h3>
+<h3>Gradient descent</h3>
+update formula :
 
 $$\mathbf{w} \leftarrow \mathbf{w}-\color{red}\lambda\frac{\delta L(\mathbf{w})}{\delta \mathbf{w}}$$
 <ul>
-<li> calcul du gradient $\frac{\delta L(\mathbf{w})}{\delta \mathbf{w}}$
-<li> mise a jour des poids en faisant un pas de longueur $\color{red}{\lambda}$
-<li> dans la direction oppposée au gradient 
-<li> // direction de plus grande pente 
-<li> itérer jusqu'a convergence
+<li> compute the gradient $\frac{\delta L(\mathbf{w})}{\delta \mathbf{w}}$
+<li> update the weights by performing a step of size  $\color{red}{\lambda}$
+<li> in the opposite direction of the gradient 
+<li> // steepest descent direction
+<li> iterate until convergence
 <ul>
+
+if $\lambda$ small enough will converge to a minima
 </section>
+
+
 
 <section >
 
-<h3>Descente de gradient</h3>
 
-Initialiser $\mathbf{w}_1$ et $\lambda=0.001$, $\alpha=0.1,L_{old}=-\infty$</br></br>
-Tant que $|L(\mathbf{w}_{n})-L_{old}|>\epsilon$:
+<h3>Gradient descent</h3>
+update formula :
+
+Initialize $\mathbf{w}_1$ et $\lambda=0.001$, $\alpha=0.1,L_{old}=-\infty$</br></br>
+while $|L(\mathbf{w}_{n})-L_{old}|>\epsilon$:
 <ul>
-<li> mise a jour des poids :
+<li> update the wieghts :
 $$\mathbf{w}_{n+1} \leftarrow \mathbf{w}_n-\color{red}\lambda\frac{\delta L(\mathbf{w}_n)}{\delta \mathbf{w}}$$
 <li> $L_{old} \leftarrow L(\mathbf{w}_n)$
-<li> test de décroissance si $L(\mathbf{w}_{n+1}) > L_{old}$
+<li> decreasing test if $L(\mathbf{w}_{n+1}) > L_{old}$
 <ul>
-<li> dimininution du pas $\lambda \leftarrow\lambda\alpha$ 
-<li>retour à l'étape précédente
+<li> step size reduction $\lambda \leftarrow\lambda\alpha$ 
 </ul>
 <li> $n\leftarrow n+1$
 <ul>
@@ -354,51 +354,51 @@ $$\mathbf{w}_{n+1} \leftarrow \mathbf{w}_n-\color{red}\lambda\frac{\delta L(\mat
 
 <section>
 <img src="images/grad1.png" width="60%"></img>
-Problème convexe
+Convexe problem
 </section>
 
 <section>
 <img src="images/grad2.png" width="60%"></img>
-Problème non convexe $\rightarrow$ minimum local
+Non convex problem $\rightarrow$ local minima
 </section>
 
 
 <section>
 <img src="images/grad3.png" width="60%"></img>
-Problème convexe
+convex problem
 </section>
 
 <section>
 <img src="images/grad4.png" width="60%"></img>
-Problème non convexe $\rightarrow$ minimum local (solution dépendante de l'initialisation)
+Non convex problem $\rightarrow$ local minima (final solution initialization dependant)
 </section>
 
 <section>
 <img src="images/grad5.png" width="60%"></img>
-Problème non convexe $\rightarrow$ minimum local (solution dépendante de l'initialisation)
+Non convex problem $\rightarrow$ local minima (final solution initialization dependant)
 </section>
 
 <section >
 
-<h1>Descente de gradient stochastique</h1>
+<h1>Stochastic gradient descent</h1>
 $$\frac{1}{\color{green}{n_b}}\sum_{i \in \color{green}{\mathbb{B}_j}} L(G(\mathbf{x}_i,\mathbf{w}),y_i) \approx \frac{1}{N} \sum_{i=1}^N L(G(\mathbf{x}_i,\mathbf{w}),y_i)$$
 
 <ul>
-<li> Faire $m$ balayage du jeu de données (epochs) 
-<li> réordonner aléatoirement le jeu de données a chaque époque
-<li> decouper en sous ensemble de données (mini-batch $\color{green}{\mathbb{B}_j}$) de taille $\color{green}{n_b}$
-<li> mettre a jour les poids avec le gradient calculer avec chaque mini-batch
-<li> itérer jusqu'au balayage complet
+<li> Perform $m$ epochs (a complet scan of the training set):   
+<li> shuffle the training set
+<li> split in mini batch (mini-batch $\color{green}{\mathbb{B}_j}$) of size $\color{green}{n_b}$
+<li> for each mini-batch update the weights with the gradients computed on the mini-batch 
+
 </ul>
 </br>
-<span class="red">Online gradient, mini-batch de taile $n_b=1$</span></br>
-<span class="red">$\Rightarrow$Faible complexité, fonctionne sur de gros jeux de données </span></br>
+<span class="red">Online gradient, mini-batch of size $n_b=1$</span></br>
+<span class="red">$\Rightarrow$Small complexity, works with huge datasets </span></br>
 
 </section>
 
 <section>
 <h1>Momentum</h1>
-<span class="red">$\Rightarrow$Variante faisant intervenir la dynamique des vecteurs de mise a jour :</br>
+<span class="red">$\Rightarrow$Variantes that take into acount the dynamic of the updates (add some intertia in the updates):</br>
  rmsprop, Adam,...</span>
 $$
 \begin{align}
@@ -406,7 +406,7 @@ $$
 \mathbf{w}_{n+1} &= \mathbf{w}_{n} -\lambda \mathbf{z}_{n+1}\nonumber
 \end{align}
 $$
-Pour plus d'information
+
 <ul>
 <li><a href="https://distill.pub/2017/momentum/">https://distill.pub/2017/momentum/</a>
 <li><a href="https://ruder.io/optimizing-gradient-descent/">https://ruder.io/optimizing-gradient-descent/</a>
@@ -414,82 +414,12 @@ Pour plus d'information
 </section>
 
 
-<section style="padding-top:5em;text-align:center">
-<h1 class="green">BP </h1>
-</section>
-<section style="padding-top:5em;text-align:center">
-<h1 class="green">Back Propagation </h1>
-</section>
 
 <section >
-<h1 class="red">Back Propagation</h1>
-<h2 class="green">Objectif </h2>
-$\Rightarrow$ calculer de manière efficace le gradient</br>
-<h2 class="green">Fonctionement</h2>
-Fonctionne en deux phases successives :
-<ul> 
-<li>Forward, <span class="red">entrées </span> aux <span class="green">sorties</span> :</br>
-$\Rightarrow$  permet de calculer efficacement les sorties de chaques couches
-<li>Backward, des <span class="green">sorties</span> aux <span class="red">entrées </span> :</br>
-$\Rightarrow$  permet de calculer efficacement le gradient des poids de chaques couches
-</ul>
-</section>
-
-<section>
-<h1>Forward, des <span class="red">entrées </span> aux <span class="green">sorties</span></h1>
-<img src="./images/Colored_neural_network_anim1.svg" height="50%"></img>
-$$\color{red}{\mathbf{x}}\in\mathbb{R}^P$$
-</section>
-
-<section>
-<h1>Forward, des <span class="red">entrées </span> aux <span class="green">sorties</span></h1>
-<img src="./images/Colored_neural_network_anim2.svg" height="50%"></img>
-$$\color{blue}{\mathbf{s}^1}\leftarrow \left[\Phi^1(\sum_p w_{1p}^1\color{red}{x_{p}} + b^1_1),...,\Phi^1(\sum_p w_{Qp}^1\color{red}{x_{p}} + b^1_Q)\right]\in\mathbb{R}^Q$$
-</section>
-
-<section>
-<h1>Forward, des <span class="red">entrées </span> aux <span class="green">sorties</span></h1>
-<img src="./images/Colored_neural_network.svg" height="50%"></img>
-$$\color{green}{\tilde{\mathbf{y}}}\leftarrow \left[\Phi^2(\sum_q w_{1q}^2\color{blue}{s^1_q} + b^1_1),\Phi^2(\sum_q w_{2q}^2\color{blue}{s^1_q} + b_2^2)\right]\in\mathbb{R}^2$$
-</section>
-
-<section>
-<h1>Forward, des <span class="red">entrées </span> aux <span class="green">sorties</span></h1>
-<img src="./images/Colored_neural_network_2_anim1.svg" height="50%"></img>
-$$\color{red}{\mathbf{x}}\in\mathbb{R}^P$$
-</section>
-
-<section>
-<h1>Forward, des <span class="red">entrées </span> aux <span class="green">sorties</span></h1>
-<img src="./images/Colored_neural_network_2_anim2.svg" height="50%"></img>
-$$\color{blue}{\mathbf{s}^1}\leftarrow \left[\Phi^1(\sum_p w_{1p}^1\color{red}{x_{p}} + b^1_1),...,\Phi^1(\sum_p w_{Qp}^1\color{red}{x_{p}} + b^1_Q)\right]\in\mathbb{R}^Q$$
-</section>
-
-<section>
-<h1>Forward, des <span class="red">entrées </span> aux <span class="green">sorties</span></h1>
-<img src="./images/Colored_neural_network_2_anim3.svg" height="50%"></img>
-$$\color{blue}{\mathbf{s}^2}\leftarrow \left[\Phi^2(\sum_q w_{1q}^2\color{blue}{s^1_q} + b^1_1),...,\Phi^2(\sum_q w_{Qq}^2\color{blue}{s^1_q} + b^2_q)\right]\in\mathbb{R}^Q$$
-</section>
-
-<section>
-<h1>Forward, des <span class="red">entrées </span> aux <span class="green">sorties</span></h1>
-<img src="./images/Colored_neural_network_2_anim3.svg" height="50%"></img>
-$$\color{blue}{\mathbf{s}_{l}} = \Phi^l(\mathbf{W}^l\color{blue}{\mathbf{s}^{(l-1)}})$$
-</section>
-
-<section>
-<h1>Forward, des <span class="red">entrées </span> aux <span class="green">sorties</span></h1>
-<img src="./images/Colored_neural_network_2.svg" height="50%"></img>
-$$\color{green}{\tilde{\mathbf{y}}}\leftarrow \left[\Phi^3(\sum_q w_{1q}^2\color{blue}{s^2_q} + b^1_1),\Phi^3(\sum_q w_{2q}^2\color{blue}{s^2_q} + b_2^2)\right]\in\mathbb{R}^2$$
-</section>
-
-
-<section >
-<h3>Descente de gradient, différentiation automatique</h3>
-<h2 class="red">BP = algorithme de base de la differentiation automatique</h2>
-Vrai changement ! </br> 
-Introduction de libraries de calcul permetant de construire automatiquement les fonctions efficaces de calcul de gradient. </br>
-Extension de BP = Reverse mode automatic differentiation
+<h3>Neural Network Libraries</h3>
+<h2 class="red">Back Propagation -> automatic differentiation</h2>
+Reverse mode automatic differentiation
+Define the network architectecture, the libraries will automaticaly create function to compute the gradients 
 <ul>
 <li> Theano
 <li> Torch
@@ -499,41 +429,8 @@ Extension de BP = Reverse mode automatic differentiation
 </section>
 
 
-<section>
-<img src="./images/tensorplay.png" width="85%">
-<a href="http://playground.tensorflow.org">http://playground.tensorflow.org</a>
-</section>
 
 
-
-<section >
-
-<h1 class="green">Auto-encoders, Apprentissage non supervisé </h1>
-
-<ul>
-<li> objectif reconstruire les entrées 
-<li> en compressant l'information au sein d'une couche centrale 
-<li> de + faible dimension (bottleneck)
-</ul>
-<img src="./images/autoencoders.svg" height="60%"/>
-</section>
-
-
-
-
-<section >
-
-<h1>Apprentissage non supervisé </h1>
-	
-<h4 class="green">Auto-encoders</h4>
-<ul>
-<li> Au final codes = projection non linéaire compressant les entrées 
-<li> Même principes d'estimation que pour PMC
-<li> Gradient stochastique, ...
-<li> Possibilité d'empiler des couches ! complique l'apprentissage
-<li> Apprentissage incrémental couches / couches
-</ul>
-</section>
 
 
 
@@ -544,8 +441,9 @@ Extension de BP = Reverse mode automatic differentiation
 
 <section >
 <h1>Keras</h1>
-Libraririe de haut niveau pour définir et apprendre les paramètres d'un réseau </br>
-//Interface Séquentielle
+</br>
+high level librairy to define nn and learn their parameters </br>
+//Sequential interface
 <pre><code class="python">model = Sequential()
 model.add(Dense(32, activation='relu', input_dim=100))
 model.add(Dense(10, activation='softmax'))
@@ -568,8 +466,8 @@ model.fit(data, one_hot_labels, epochs=10, batch_size=32)
 
 <section >
 <h1>Keras</h1>
-Libraririe de haut niveau pour définir et apprendre les paramètres d'un réseau </br>
-//Interface Fonctionelle
+high level librairy to define nn and learn their parameters </br>
+//Functional Interface 
 <pre><code class="python">from keras.layers import Input, Dense
 from keras.models import Model
 # This returns a tensor
@@ -588,750 +486,28 @@ model.fit(data, labels)  # starts training
 
 
 <section>
-<h1>Architectures profondes</h1>
-<ul>
-<li> permet d'extraire automatiquemet des variables pertinentes 
-<li> profond > large
-<li> <span class="red">! optimisation (vanishing gradient)<span>
-<ul>
-<img src="./images/Activation_logistic.svg" height="400px">
-<span class="red"> disparition du gradient = gradient ~ 0 dans les première couche (ne remonte pas)</span>
-</section>
-
-<section style="padding-top:5em;text-align:center">
-<h1 class="green">Astuces techniques</h1>
-</section>
-<section >
-
-<h1>Eviter le sur-apprentissage</h1>
-<ul>
-<li>Réseau de neuronnes, approximateur universel, capacité forte
-<li>Nécessaire d'éviter le sur-apprentissage
-</ul></br>
-Différentes méthodes, ex :
-<ul>
-<li> <span class="red">Régularisation</span> : $\sum_{i=1}^NL(G(\mathbf{x}_i,\mathbf{w}),y_i)+\color{green}{\beta\sum_{k=1}^M|w_k|}$
-<li> Perturbation   : couche de <span class="red">drop-out</span> </br>(mise a 0 aléatoire de certaine valeurs)
-<li> <span class="red">Early-stopping</span> : arrêt de l'optimisation avant convergence complète (en surveillant l'erreur de validation)
-</section>
-
-
-<section >
-
-<h1>Eviter le sur-apprentissage</h1>
-Réglage des hyperparamètres :
-<h4 class="green">Architecture :</h4>
-<ul>
-<li> nombre de couches
-<li> largeur des couches
-<li> fonctions d'activations 
-<li> paramètres de régularisation
-</ul>
-<h4 class="green"> Optimisation : </h4>
-<ul>
-<li> taille des mini-batchs
-<li> pas de gradient 
-<li> nombre d'époques
-</ul>
-Utilisation d'une estimation de l'erreur de généralisation </br>(ensemble de validation, validation croisée)
+<img src="./images/tensorplay.png" width="85%">
+<a href="http://playground.tensorflow.org">http://playground.tensorflow.org</a>
 </section>
 
 <section>
-<h1>Batch norm</h1>
-$$
-s = \frac{s-m_s}{\sqrt{\sigma_s^2+\epsilon}}
-$$
-<ul>
-<li> Contrôler la moyenne et la variance des données entre les couches
-<li> Chaque entrée est contrôlée de manière indépendantes
-<li> Apprentissage : (moyenne, variance) du batch
-<li> Test : (moyenne, variance) du jeu de données d'apprentissage complet	
-<ul>
-</section>
+<h1> Links and ressources </h1>
 
-
-<section>
-<h1>Architectures profondes</h1>
- <span class="red">! optimisation (vanishing gradient)</span>
-<h2 class="green">Relu</h2>
-<img src="./images/Activation_rectified_linear.svg" height="30%">
-<h2> + de gradient </h2>
-</section>
-
-
-<section>
-<h1>Régularisation, ajout de bruit</h1>
-<span class="red">Drop out</span>
-<ul>
-<li> Durant l'apprentissage, déconnecter aléatoirement à chaque itération des poids avec une probabilité $p$.
-<li> Au moment du test, multiplier les poids par leurs fréquence de déconnexion observée 
-</ul>
-<img src="./images/drop_out1.png" width="30%">
-<span class="small">Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., & Salakhutdinov, R. R. (2012). Improving neural networks by preventing co-adaptation of
-feature detectors. arXiv:1207.0580.</span>
-</section>
-
-
-<section>
-<h1>Régularisation, ajout de bruit</h1>
-<span class="red">Drop out</span>
-<ul>
-<li> Durant l'apprentissage, déconnecter aléatoirement à chaque itération des poids avec une probabilité $p$.
-<li> Au moment du test, multiplier les poids par leurs fréquence de déconnexion observée 
-</ul>
-<img src="./images/drop_out2.png" width="30%">
-<span class="small">Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., & Salakhutdinov, R. R. (2012). Improving neural networks by preventing co-adaptation of
-feature detectors. arXiv:1207.0580.</span>
-</section>
-
-
-
-
-<section>
-<h1>Régularistation</h1>
-$$\sum_iL(y_i,G(\mathbf{x}_i,\mathbf{w}))+\lambda\Omega(\mathbf{w})$$
-<ul>
-<li>L2 : $\Omega(\mathbf{w})=\sum_d||\mathbf{w}_d||$
-<li>L1 : $\Omega(\mathbf{w})=\sum_d|\mathbf{w}_d|$
-<li>t-Sudent : $\Omega(\mathbf{w})=\sum_d\log(1+\mathbf{w}_d^2)$
-</ul>
-// prior bayesian
-</section>
-
-<section>
-<h1>Pré-trainning</h1>
-Pré-entrainement non supervisé
-<ul>
-<li>Utiliser un auto-encoder appris couche par couche
-<li>Ne conserver que l'encodeur
-<li>Apprendre les couches de sorties 
-</ul>
-</section>
-
-
-<section style="padding-top:5em;text-align:center">
-<h1>Données particulières images, texte, séquences, série temporelle</h1>
-</section>
-
-
-<section>
-<h1>Réseau de neuronnes modernes </h1>
-<h4>Architecture modulaire</h4>
-capable de traiter différents type de données </br>
-<ul>
-<li> Couches denses (MLP) 
-<li> Couche convolution (Images)
-<li> Couche récurrentes (Séquences, temps)
-</ul>
-<h4>Combinaison ?</h4>
-<ul>
-<li> Empilement des couches potentiellement de différentes nature
-<li> Algorithme d'opitmisation générique (Reverse Mode AD // BP)
-</ul>
-</section>
-<section style="padding-top:5em;text-align:center">
-<h1>CNN</h1>
-</section>
-
-<section >
-<h1>Images</h1>
-$\Rightarrow$ convolution, pooling, partage spatial des poids (invariance par translation)
-<div style="text-align:center;height:80%" >
-<table style="margin:auto;height:80%">
-<tr><td>$\begin{bmatrix}0 & 1 & 0\\1 & -4 & 1\\0 & 1 & 0 \end{bmatrix}$</td>
-<td><img src="./images/generic-taj-convmatrix-edge-detect.jpg" height="95%"></img></td></tr>
-</table>
-</div>
-</section>
-
-<section>
-<h1>Convolution</h1>
-partage spatiale des poids, invariance par translation
-<img src="./images/convlayer.gif" height="70%"></img>
-</section>
-
-<section>
-<h1>Convolution</h1>
-<img src="./images/conv2layer.gif" height="70%"></img>
-</section>
-
-<section>
-<h1>Convolution</h1>
-partage spatiale des poids, invariance par translation
-<img src="./images/cnn.png" height="70%"></img>
-</section>
-
-
-<section>
-<h1>Max pooling</h1>
-Compression
-<img src="./images/maxpool.gif" width="60%"></img>
-</section>
-
-
-<section >
-<h1>Images</h1>
-$\Rightarrow$ convolution, pooling, partage spatial des poids (invariance par translation)
-<img src="./images/convnet.png" width="90%"></img>
-
-
-<span class="small">LeCun, Y. (1989). Generalization and network design strategies. Connections in Perspective. North-Holland, Amsterdam, 143-55.</br>
-LeCun, Y., Kavukcuoglu, K., & Farabet, C. (2010, May). Convolutional networks and applications in vision. In Circuits and Systems (ISCAS),
-Proceedings of 2010 IEEE International Symposium on (pp. 253-256). IEEE.</span>
-</section>
-
-
-<section >
-<h1>Images</h1>
-$\Rightarrow$ convolution, pooling, partage spatial des poids (invariance par translation)
-<img src="./images/cnnlecun.png" height="40%"></img>
-<span class="small">LeCun, Y. (1989). Generalization and network design strategies. Connections in Perspective. North-Holland, Amsterdam, 143-55.</br>
-LeCun, Y., Kavukcuoglu, K., & Farabet, C. (2010, May). Convolutional networks and applications in vision. In Circuits and Systems (ISCAS),
-Proceedings of 2010 IEEE International Symposium on (pp. 253-256). IEEE.</span>
-</section>
-
-<section>
-<h1 class="red">CNN, Architecture type</h1>
-Image $\rightarrow\{1,...,K\}$
-<ul>
-<li> Convolutional blocks (n times)
-<ul>
-<li>Convolutional layer
-<li>Batch normalization
-<li>Relu activation
-<li>(Subsampling)
-</ul>
-<li>Dense blocks (n times)
-<ul>
-<li>Batch normalization
-<li>Dense layer (+ weights regularization)
-<li>Relu/Tanh activation
-</ul>
-<li>Dernière couche
-<ul>
-<li>Batch normalization + Dense + Softmax activation
-</ul>
-</ul>
-</section>
-
-<section>
-<h1>res-net</h1>
-Principe
-Quand une couche a la même taille en entrée et sortie ajouter l'entrée à la sortie.
-<img src="images/skip.png" height="40%"></img>
-$\rightarrow$ Le gradient peut sauter la couche</br>
-$\rightarrow$ aide avec les problème de disparition du gradient
-</section>
-
-
-<section>
-<h1>res-net</h1>
-<img src="images/skip_net1.png" width="90%"></img>
-</section>
-
-<section>
-<h1>Dé-Convolution (convolution transposer)</h1>
-// up sampling  
-<img src="./images/trans-conv.svg" width="85%"></img>
-</section>
-
-
-<section>
-<h1>Dé-Convolution</h1>
-Segmentation d'image : image $\rightarrow$ image
-<img src="./images/imseg.png" height="70%"></img>
-</section>
-
-
-<section>
-<h1>Dé-Convolution</h1>
-Segmentation d'image : image $\rightarrow$ image
-<img src="./images/unet.png" height="70%"></img>
-</section>
-
-<section style="padding-top:5em">
-<h1 class="green">RNN, LSTM,GRU</h1>
-</section>
-
-
-<section >
-<h1>Séquences, séries temporelles</h1>
-<h3>Réseau de neuronnes récurrents (RNN)</h3>
-LSTM, GRU :</br>
-<img src="./images/RNN-unrolled.png" width="50%" style="margin-top:1em">
-Une fois déplier // NN classique (poids partagés)
-</section>
-
-
-<section>
-<h1>RNN</h1>
-<img src="images/rnn/architecture-rnn.png" width="50%"></img>
-$$a_t = \Phi(W_{aa}a_{t-1}+W_{ax}x_{t}+b_a)$$
-$$y_t = \Phi(W_{ya}a_{t}+b_y)$$
-</section>
-
-
-<section >
-<h1>RNN</h1>
-<img src="./images/RNN-unrolled.png" width="50%" style="margin-top:1em">
-$$L_t = \sum_{t=1}^{T}L(\tilde{y}_i,y_i)$$
-<h3>Apprentissage</h3>
-<ul>
-<li>BPTT : Back Propagation Throught Time 
-<li>Gradient = multiplication </br> 
-$\rightarrow$ décroître/croître de manière exponentiel en fonction du nombre de couches.
-</ul>
-
-</section>
-
-
-<section >
-<h1>RNN</h1>
-<img src="./images/RNN-unrolled.png" width="50%" style="margin-top:1em">
-$$L_t = \sum_{t=1}^{T}L(\tilde{y}_i,y_i)$$
-<h3>Apprentissage</h3>
-<ul>
-<li>BPTT : Back Propagation Throught Time 
-<li>! explosion de gradient (éviter relu)  $g = \frac{th}{||g||}g$
-<li>! disparition du gradient
-</ul>
-</section>
-
-
-<section>
-<h1>RNN, différentes variantes suivant les besoins</h1>
-<img src="images/rnn/rnn-many-to-many-same.png" width="50%"></img>
-</section>
-
-
-<section>
-<h1>RNN, différentes variantes suivant les besoins</h1>
-<img src="images/rnn/rnn-many-to-one.png" width="50%"></img>
-Ex: classification de sequences de taille variable (sentiment analysis)
-</section>
-
-
-<section>
-<h1>RNN, différentes variantes suivant les besoins</h1>
-<img src="images/rnn/rnn-one-to-many.png" width="50%"></img>
-Ex : génération de musique 
-</section>
-
-
-<section>
-<h1>RNN, différentes variantes suivant les besoins</h1>
-<img src="images/rnn/rnn-many-to-many-different.png" width="50%"></img>
-Ex : traduction automatique, génération de sous-titre pour des images (image captionning)
-</section>
-
-<section>
-<h1>RNN, LSTM</h1>
-<h2>Mémoire explicite</h2>
-<ul>
-<li>meilleure prise en compte des dépendances long termes
-<li>séparation de la couche cachée temporelle en 2 partie $[c_t,a_t]$
-<li>$\rightarrow$ permettre a l'information de remonter le temps plus facilement 
-</ul>
-<img src="images/rnn/lstm.png" width="50%"></img>
-<a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/"> https://colah.github.io/posts/2015-08-Understanding-LSTMs/</a>
-
-
-
-</section>
-
-
-<section>
-<h1>RNN, LSTM</h1>
-<ul>
-<li>introduction de porte pour gérer les deux partie 
-$$\Gamma_*(a_t,x_t)=\sigma(\mathbf{w}a_t+\mathbf{u}x_t+b)$$
-<li>$\Gamma_f$ porte de facteur d'oublie
-<li>$\Gamma_u$,$\Gamma_r$ porte de mise a jour 
-<li>$\Gamma_o$ porte de sortie 
-</ul>
-<img src="images/rnn/lstm.png" width="50%"></img>
-<a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/"> https://colah.github.io/posts/2015-08-Understanding-LSTMs/</a>
-</section>
-
-<section>
-<h1>LSTM</h1>
-<h2>Oublier </h2>
-
-<img src="images/rnn/LSTM_detail_forget.png" width="50%"></img>
-</section>
-
-<section>
-<h1>LSTM</h1>
-<h2>Extraire ce qui est pertinent de la nouvelle données</h2>
-<img src="images/rnn/LSTM_detail_add.png" width="50%"></img>
-</section>
-
-
-<section>
-<h1>LSTM</h1>
-<h2>Mettre a jour</h2>
-<img src="images/rnn/LSTM3_detail_add2.png" width="50%"></img>
-</section>
--
-
-<section>
-<h1>LSTM</h1>
-<h2>Construire la sortie</h2>
-<img src="images/rnn/LSTM_detail_out.png" width="50%"></img>
-</section>
-
-<section>
-<h1>GRU</h1>
-<img src="images/rnn/gru.png" width="50%"></img>
-simplification, combiner facteur d'oublie et de mise a jour
-</section>
-
-
-
-<section style="padding-top:5em">
-<h1 class="green">Modèles génératifs</h1>
-<h1 class="green">GAN</h1>
-</section>
-
-
-<section>
-<h1>Modèles génératifs profonds, GAN, VAE,...</h1>
-<h3 class="red">Objectifs :</h3>
-<ul>
-<li>Estimer un modèle $Q$ a partir de points $p$ tirer suivant une distribution inconnues
-<li>Générer de nouveaux points grâce a $Q$
-<li>Pas de modèle de la distribution $P$, impossible de calculer une vraisemblance. 
-</ul>
-<img src="./images/gan/gan_ex.png" width="50%"></img>
-<span class="small">Goodfellow, I. (2016). NIPS 2016 Tutorial: Generative Adversarial Networks. arXiv preprint arXiv:1701.00160.</span>
-</section>
-
-
-<section>
-<h1>Generateur</h1>
-Générer à parir d'un vecteur de petite dimension $z$ un point $\tilde{x}$ dans un espace de grande dimension (ex: image)
-<img src="./images/gan/generator.png" width="50%"></img>
-</section>
-
-
-<section>
-<h1>Auto-encoder</h1>
-<img src="./images/gan/diabolo.png" height="30%"></img>
-$$L(\phi,\theta,\mathbf{x})=-\mathbb{E}_{q_\phi(z|x)}\log(p_{\theta}(\mathbf{x}|\mathbf{z}))$$
-<h3 class="green">idée !</h3>
-<ul>
-<li>Utiliser le décodeur
-<li>Problème pas de contrôle sur la distribution de $z$
-</ul>
-</section>
-
-
-
-<section>
-<h1>Variational Auto Encoder</h1>
-$$L(\phi,\theta,\mathbf{x})=-\mathbb{E}_{q_\phi(z|x)}\log(p_{\theta}(\mathbf{x}|\mathbf{z}))+D_{KL}(q_\phi(\mathbf{z}|\mathbf{x})|p_\theta(z))$$
-<img src="./images/gan/vae.png" height="30%"></img>
-<ul>
-<li>Ajouter un terme pour que la distribution de $z$ soit proche d'une distribution cible
-<li>Typiquement distribution Gaussienne multivariée de moyenne nulle et de matrice de variance covariance égale à l'identité
-<li>$D_{KL}$ permet de mesurer l'écart entre deux distribution !! non symétrique (liens avec la vraisemblance)
-</ul>
-<h3 class="red">Problème $p(\mathbf{z})$ multimodale ??</h3>
-<span class="small">
-Kingma, Diederik P., and Max Welling. ”Auto-encoding variational bayes.” arXiv preprint arXiv:1312.6114 (2013).
-</span>
-</section>
-
-
-
-<section>
-<h1>GAN</h1>
-Un jeux a 2 joueurs, chaque joueurs est un réseau de neuronnes
-<ul>
-<li>Un <span class="red">Discriminateur D</span> essaye de disciminer les exemple réels $x$ de ceux générer par $G$ :  $\tilde{x}$
-<li>Un <span class="red">Générateur G</span> essaye de tromper D
-</ul>
-<img src="./images/gan/gan.png" width="50%"></img>
-</section>
-
-
-<section>
-<h1>GAN</h1>
-Un jeux a 2 joueurs, chaque joueurs est un réseau de neuronnes
-
-$$L(\omega,\theta)=-\frac{1}{2}\mathbb{E}_{x\sim P}log(D_\omega(x))-\frac{1}{2}\mathbb{E}_{\mathbf{z}\sim Z}log(1-D_\omega(G_\theta(\mathbf{z})))$$
-<ul>
-<li>Discriminateur (disciminer les exemple réels $x$ de ceux générer par $G$ $\tilde{x}$)</br>
-Minimiser L(ω, θ) en ω avec $\theta$ fixé.</br>
-$\rightarrow$ cross entropy classique.</br>
-<li>G essaye de tromper D</br>
-Maximiser L(ω, θ) en θ avec ω fixé.
-</ul></br>
-<span class="green"> (Zero-Sum Game) Equilibre de Nash // propriété théorique</span></br>
-<span class="red"> Optimsation pas si facile </span></br>
-<span class="small">
-Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., Bengio, Y. (2014). Generative adversarial nets. In Advances in neural
-information processing systems (pp. 2672-2680)
-</span>
-</section>
-
-<section>
-<h1>dcGAN</h1>
-Exemple de générateur pour des images
-<img src="./images/gan/dcgan.png" width="50%"></img>
-</section>
-
-
-<section>
-<h1>dcGAN</h1>
-Exemple de sorties
-<img src="./images/gan/dcgan_ex.png" width="50%"></img>
-</section>
-
-
-<section>
-<h1>dcGAN</h1>
-Exemple de sorties
-<img src="./images/gan/thispersondne.png" width="50%"></img>
-</section>
-
-<section>
-<h1>GAN et variante</h1>
-<img src="./images/gan/gan_small.png" width="50%"></img>
-</section>
-
-<section>
-<h1>Conditional GAN</h1>
-<img src="./images/gan/cgan.png" width="50%"></img>
-<span class="small">
-Mirza, M., Osindero, S. (2014). Conditional generative adversarial nets. arXiv preprint arXiv:1411.1784</br>
-Reed, S., Akata, Z., Yan, X., Logeswaran, L., Schiele, B., Lee, H. (2016, May). Generative adversarial text to image synthesis. In Proceedings of The
-33rd International Conference on Machine Learning (Vol. 3).</span>
-</section>
-
-
-
-<section>
-<h1>Conditional GAN</h1>
-Exemple de sorties
-<img src="./images/gan/cgan_ex.png" height="50%"></img>
-</section>
-
-
-
-
-<section>
-<h1>Adversarial Auto Encoder</h1>
-<img src="./images/gan/aae.png" width="50%"></img>
-$$L = L_{adv} + L_{rec}$$
-<span class="small">Makhzani et al. “Adversarial Autoencoders”. 2015</span>
-</section>
-
-
-
-<section>
-<h1>Espace latent</h1>
-<img src="./images/gan/latentspace.png" width="50%"></img>
-<span class="small">Radford, A., Metz, L., Chintala, S. (2015). Unsupervised representation learning with deep convolutional generative adversarial networks. arXiv
-preprint arXiv:1511.06434.</span>
-</section>
-
-
-<section>
-<h1>Pix2pix</h1>
-Condition = image + Adversarial Auto Encoder
-<img src="./images/gan/pix2pix1.png" width="50%"></img>
-<span class="small">Isola, P., Zhu, J. Y., Zhou, T., Efros, A. A. (2016). Image-to-image translation with conditional adversarial networks. arXiv preprint arXiv:1611.07004.</span>
-</section>
-
-
-<section>
-<h1>Pix2pix</h1>
-Condition = image + Adversarial Auto Encoder
-<img src="./images/gan/pix2pix2.jpg" width="50%"></img>
-<span class="small">Isola, P., Zhu, J. Y., Zhou, T., Efros, A. A. (2016). Image-to-image translation with conditional adversarial networks. arXiv preprint arXiv:1611.07004.</span>
-</section>
-
-
-<section>
-<h1>Pix2pix</h1>
-Condition = image + Adversarial Auto Encoder
-<img src="./images/gan/pix2pix3.jpg" width="50%"></img>
-<span class="small">Isola, P., Zhu, J. Y., Zhou, T., Efros, A. A. (2016). Image-to-image translation with conditional adversarial networks. arXiv preprint arXiv:1611.07004.</span>
-</section>
-
-
-<section style="padding-top:5em ">
-<h1>Self supervised learning</h1>
-$$\{\mathbf{x}_1,...,\mathbf{x}_n\}\rightarrow \{(\mathbf{x}_1,\tilde{y}_1),...,(\mathbf{x}_n,\tilde{y}_n)\}\rightarrow\,f(\mathbf{x})\approx \tilde{y}$$
-</section>
-
-<section>
-<h1>Transfert d'apprentissage</h1>
-<ul>
-<li>Utiliser les première couches d'un réseau entrainé sur une autre tache
-<li>"Finetuning" des dernière couches sur la tâche cible. 
-</ul>
-<img src="./images/transfert.png" width="40%">
-</section>
-
-<section >
-<h1>Self supervised learning</h1>
-<ul>
-<li> Apprendre un réseau avec une tache pretexte </br>
-<span class="red">! (construite sans labels mais supervisé) </span>
-<li>"Finetuning" des dernière couches sur la tâche cible. 
-</ul>
-<img src="./images/pretext_selfsup2.png" height="60%">
-</section>
-
-<section >
-<h1>Self supervised learning</h1>
-<ul>
-<li> Apprendre un réseau avec une tache pretexte </br>
-<span class="red">! (construite sans labels mais supervisé) </span>
-<li>"Finetuning" des dernière couches sur la tâche cible. 
-</ul>
-<img src="./images/colorisation.png" width="60%">
-<h3>Colorisation</h3>
-</section>
-
-<section >
-<h1>Self supervised learning</h1>
-<ul>
-<li> Apprendre un réseau avec une tache pretexte </br>
-<span class="red">! (construite sans labels mais supervisé) </span>
-<li>"Finetuning" des dernière couches sur la tâche cible. 
-</ul>
-<img src="./images/pretext_selfsup.png" height="60%">
-</section>
-<section >
-<h1>Self supervised learning</h1>
-<ul>
-<li> Apprendre un réseau avec une tache pretexte </br>
-<span class="red">! (construite sans labels mais supervisé) </span>
-<li>"Finetuning" des dernière couches sur la tâche cible. 
-</ul>
-<img src="./images/patch.png" height="60%">
-<h3>Patchs spatial configuration</h3>
-</section>
-
-
-
-<section >
-<h1>Texte, WordEmbedding</h1>
-<img src="./images/wordembedding.png" height="75%" style="margin-top:1em">
-</section>
-
-<section>
- WordEmbedding>
-<h1>Texte, WordEmbedding</h1>
-Prédire le prochain mots
-
-<img src="./images/nn_language_model-1.jpg" height="55%" style="margin-top:1em">
-Bengio, Y., Ducharme, R., Vincent, P., & Janvin, C. (2003). A Neural Probabilistic Language Model. The Journal of Machine Learning Research, 3, 1137–1155. Retrieved from http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf ↩︎
-</section>
-
-<section>
-<h1>Texte, WordEmbedding</h1>
-Prédire le prochain mots:
-
-<ul>
-<li> <b>Embedding Layer</b>: produit le word embeding index vector . word embeding matrix</br>
-<li> <b>Intermediate Layer(s)</b>: consrtuction de représentation inetrmédiaires, e.g. a couches denses prenant en entrée la concatenation des embeddings des mots précedents;</br>
-<li> <b>Softmax Layer</b>: couche de décision produit une probabilité sur le vocabulaire V</br>
-</ul>
-</section>
-
-
-
-
-<section>
-<h1>Texte, WordEmbedding, CBOW</h1>
-Prédire un mot a partir de son contexte:
-
-<img src="./images/cbow.png" height="55%" style="margin-top:1em">
-Mikolov, T., Corrado, G., Chen, K., & Dean, J. (2013). Efficient Estimation of Word Representations in Vector Space. Proceedings of the International Conference on Learning Representations (ICLR 2013), 1–12. ↩︎
-
-</section>
-
-<section>
-<h1>Texte, WordEmbedding, CBOW</h1>
-Prédire un mot a partir de son contexte:
-<ul>
-<li> <b>Embedding Layer</b>:: produit le word embeding index vector . word embeding matrix;
-<li> <b>Intermediate Layer(s)</b>: une simple moyenne des embeddings du contexte 
-<li> <b>Softmax Layer</b>: couche de décision produit une probabilité sur le vocabulaire V
-</ul>
-</section>
-
-<section>
-<h1>Texte, WordEmbedding, CBOW</h1>
-D'un point de vue computationel la dernière couche de soft-max coute cher (|V| est grand)
-$$p(w|c)=\frac{\exp(h^{t}v_{w})}{\sum_{w_i\in V}\exp(h^{t}v_{w_{i}})}$$
-Idée modifier le problème 
--> liens "Contrastive learning" / reformuler la loss sur des paires
-</section>
-
-
-</section>
-<section>
-<h1>Texte CBOW + Negative sampling</h1>
-<h3>Tâche pretexte : Mots proche // Mots distants</h3>
-$\Rightarrow$ one-hot encoding, position dans le dictionaire $(0,0,...,1,...,0,0)$
-<h4>Exemple wordEmbeding :</h4> 
-<ul>
-<li> $\mathbf{z}_1 = \mathbf{x}_1^t\mathbf{V}$
-<li> $\mathbf{z}_2 = \mathbf{x}_2^t\mathbf{V}$
-<li> $s = \frac{\mathbf{z}_1^t\mathbf{z}_2}{||\mathbf{z}_1||||\mathbf{z}_2||}$
-<li> $y = sigmoid(s)$
-</ul>
-</br>
-<h4>Construction du jeu de données d'apprentissage :</h4>
-<ul>
-<li>couples de mots $(\mathbf{x}_1,\mathbf{x}_2)$ présent dans la même fenêtre ($y=1$)
-<li>couples de mots $(\mathbf{x}_1,\mathbf{x}_2)$ aléatoires ($y=0$)
-</ul>
-$\Rightarrow \mathbf{V}$ position des mots dans l'espace de projection  
-</section>
-
-
-<section>
-<h1>Texte CBOW + Negative sampling</h1>
-Tâche pretexte :
-<h3>Tâche pretexte : Mots proche // Mots distants</h3>
-<h4>Construction du jeu de données d'apprentissage :</h4>
-<ul>
-<li>couples de mots $(\mathbf{x}_1,\mathbf{x}_2)$ présent dans la même fenêtre ($y=1$)
-<li>couples de mots $(\mathbf{x}_1,\mathbf{x}_2)$ aléatoires ($y=0$)
-</ul>
-$\Rightarrow \mathbf{W}$ position des mots dans l'espace de projection  
-<h4>Construction des exemples</h4>
-<ul>
-<li> Nombre d'exemple négatif / exemple positif <i>(nb_neg)</i>
-<li> Tirage des mots négatif (distribution empirique lissée, $\alpha$) 
-$$ps_{w_i}^\alpha= \frac{\#w_i^{\alpha}}{\sum_j\#w_j^\alpha}$$
-<li> Sous-échantillonage des mots fréquents ($t$)
-$$ pr_{w_i} = 1 -\sqrt(\frac{t}{ps_{w_i}^1})$$
-</ul>
-</section>
-
-
-<section>
-<h1> Liens ressources </h1>
-
-& credits images 
+& images credits 
 
 <ul>
 <li><a href="https://www.tensorflow.org/tutorials">https://www.tensorflow.org/tutorials</a>
 
 <li> <a href="https://stanford.edu/~shervine/teaching/cs-230/"> standford cs230 </a>
 
-<li> <a href="https://atcold.github.io/pytorch-Deep-Learning/"> course lecun </a>
+<li> <a href="https://github.com/rasbt/stat453-deep-learning-ss20"> stat 453 </a>
+
+<li> <a href="https://atcold.github.io/pytorch-Deep-Learning/"> course yann lecun </a>
  
-<li> <a href="https://moodle.insa-rouen.fr/course/view.php?id=1207">insa rouen </a>
+<li> <a href="https://moodle.insa-rouen.fr/course/view.php?id=1207">romain herault insa </a>
 
 <li><a href="https://drive.google.com/file/d/1e_9W8q9PL20iqOR-pfK89eILc_VtYaw1/view"> Gradient-based Optimization in deep learning </a>
+
 
 
 </ul>

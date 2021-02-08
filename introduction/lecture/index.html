@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<style>
+
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
+@import url(https://fonts.googleapis.com/css?family=Contrail+One:400,700);
+
+</style>
+<link rel="stylesheet" type="text/css" href="../../library/common.css" />
+<link rel="stylesheet" type="text/css" href="../../library/screen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../../library/print.css" media="print" />
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+
+</head>
+<section style="text-align:center;padding-top:5em;">
+  <h1><span class="green">Introduction à la data-science et à ses outils   </span></h1></br> <h2><p class="grey">Master, Paris Est MLV</h2>
+  <a href="http://www.twiter.com/comeetie">@comeetie</a>
+</section>
+
+
+
+<section > <h1><span class="purple">Data Science ?</span></h1><br/>
+<h4>“The next sexy job”</h4> 
+</br>
+<h4>“The ability to take data to be able to understand it, to process 
+it, to extract value from it, to visualize it, to communicate it,
+that’s going to be a hugely important skill.” </h4>
+<span class="red"> -- Hal Varian, Google</span>
+</section>
+
+
+
+<section > <h1><span class="purple">Data Science ?</span></h1><br/>
+<h4>“Data science, as it's practiced, is a blend of <span class="green">Red-Bull-fueled 
+hacking</span> and <span class="blue">espresso-inspired statistics</span>.” </h4> 
+</br>
+<h4>“Data science is the civil engineering of data. Its acolytes 
+possess a practical knowledge of tools & materials, coupled 
+with a theoretical understanding of what's possible.” </h4>
+<span class="green"> -- Mike Driscoll, CEO of metamarkets:</span>
+</section>
+
+<section style="background-color:white;color:black">
+<h1>Drew Conway’s Data Science Venn Diagram</h1>
+<img src="./images/VennDiagram.png" height="60%">
+</section>
+
+<section > <h1><span class="purple">Data Science ?</span></h1><br/>
+
+<h4>“A data scientist is someone who can <span class="red">obtain, scrub, explore, model 
+and interpret data</span>, blending <span class="blue">hacking, statistics and machine 
+learning</span>. Data scientists not only are adept at working with data, but 
+appreciate data itself as a first-class product.” </h4>
+<span class="blue"> -- Hilary Mason, chief scientist at bit.ly</span>
+</section>
+
+<section>
+<h4>Parler de la donnée, c'est aussi évoquer le datascientist, ce mouton à 5 pattes de la data disposant de compétences statistiques, informatiques, comprenant parfaitement les enjeux métier de l'entreprise... Est-il aussi un fantasme du discours ambiant sur le big data ?</h4>
+L-DB : S'il peut exister des profils qui s'approchent de cette description, la réalité démontre le plus souvent que la datascience, comme la science en générale, ne se produit pas seule mais en groupe. La bonne question à se poser est donc plutôt celle de la synchronisation des différentes compétences au sein de l'organisation. Nous plaidons davantage pour un datascientism que pour des datascientists.
+SC : Une autre réalité méconnue sur le datascientist est qu'il s'agit avant tout d'un métier d'artisan. Chaque problème et chaque jeu de données demande toujours une démarche spécifique qui n'est pas industrialisable, ce que beaucoup de gens ne comprennent pas encore.
+</section>
+
+
+<section>
+<h1>Un domaine en construction</h1>
+<blockquote class="twitter-tweet" lang="fr"><p>&quot;Data science: how is it different to statistics ?&quot; <a href="http://t.co/ULAGIeZDdR">http://t.co/ULAGIeZDdR</a> / by <a href="https://twitter.com/hadleywickham">@hadleywickham</a></p>&mdash; Arthur Charpentier (@freakonometrics) <a href="https://twitter.com/freakonometrics/status/507992032791781376">5 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+
+<section>
+<h1>Un domaine en construction</h1>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="fr"><p><a href="https://twitter.com/freakonometrics">@freakonometrics</a> <a href="https://twitter.com/hadleywickham">@hadleywickham</a> Statisticians not cleaning reshaping data? What have I been doing the last 10 years?</p>&mdash; Ralph Winters (@RDub2) <a href="https://twitter.com/RDub2/status/508006575454572544">5 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="fr"><p><a href="https://twitter.com/RDub2">@RDub2</a> they are, but they&#39;re not teaching/research it (by and large)</p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/508011479174365184">5 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</section>
+
+<section>
+<h1>Un domaine en construction</h1>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="fr"><p><a href="https://twitter.com/hadleywickham">@hadleywickham</a> I think the collection analysis, insight generation, cleaning, communication is multidisciplinary not just <a href="https://twitter.com/hashtag/ds?src=hash">#ds</a></p>&mdash; Ralph Winters (@RDub2) <a href="https://twitter.com/RDub2/status/508037306197241856">5 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" lang="fr"><p>.<a href="https://twitter.com/freakonometrics">@freakonometrics</a> <a href="https://twitter.com/hadleywickham">@hadleywickham</a>, please find my view on <a href="https://twitter.com/hashtag/BigData?src=hash">#BigData</a>, <a href="https://twitter.com/hashtag/DataScience?src=hash">#DataScience</a> + <a href="https://twitter.com/hashtag/Statistics?src=hash">#Statistics</a> at <a href="http://t.co/VXXIDWdTNi">http://t.co/VXXIDWdTNi</a> <a href="https://twitter.com/RDub2">@Rdub2</a></p>&mdash; Dr. Diego Kuonen (@DiegoKuonen) <a href="https://twitter.com/DiegoKuonen/status/508108135614406656">6 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</section>
+
+
+<section>
+<h1>avec des origines anciennes</h1>
+<img src="./images/640px-Johannes_Kepler_1610.jpg" height="60%">
+<h4 style="text-align:center"><a href="http://fr.wikipedia.org/wiki/Johannes_Kepler">Johann Kepler</a></h4>
+</section>
+
+
+<section >
+<h1>avec des origines anciennes</h1>
+<iframe width="100%" height="50%" scrolling="no" src="./Kepler.html" style="border: none;"></iframe>
+<h4 style="text-align:center"><a href="http://fr.wikipedia.org/wiki/Johannes_Kepler">Johann Kepler</a>, mbostock blo.cks // NYT </h4>
+</section>
+
+
+<section>
+<h1>avec des origines anciennes</h1>
+<img src="./images/minardportrait.jpg" height="60%">
+<h4 style="text-align:center">Charles-Joseph Minard</h4>
+</section>
+
+
+<section style="margin:10px;padding:0px;padding-top:1.5em" class="white">
+<a href="http://fr.wikipedia.org/wiki/Charles_Joseph_Minard#mediaviewer/File:Minard.png"><img src="./images/Minard.png" width="100%"></a>
+</section>
+
+<section>
+<h1>avec des origines anciennes</h1>
+<img src="./images/William_Sealy_Gosset.jpg" height="70%">
+<h4 style="text-align:center">William Sealy Gosset (Student)</h4>
+</section>
+
+
+
+<section>
+<h1>avec des origines anciennes</h1>
+<img src="./images/lovely_day_for_a_guinness_by_blackers33-d53729y.jpg" height="70%">
+<h4 style="text-align:center">William Sealy Gosset (Student)</h4>
+</section>
+
+
+
+<section>
+<h1>Des compétences clés</h1>
+<h2 class="blue">1. Préparer les données (DB) </h2>
+Récupérer, mélanger, enrichir, filtrer, nettoyer, vérifier, formater, transformer des données...
+<h2 class="red">2. Mettre en œuvre une méthode un modèle (ML/Stats)</h2>
+Arbre de décision, régression, clustering, Modèle graphique, SVM...
+<h2 class="green">3. Interpréter les résultats (Vis) </h2>
+Graphiques, Data visualisation, Cartes...
+</section>
+
+<section>
+<h1>Des compétences clés</h1>
+<h2><span class="blue">1. Préparer les données (DB)
+Récupérer, mélanger, enrichir, filtrer, nettoyer, vérifier, formater, transformer des données...
+<h2 class="red">2. Mettre en œuvre une méthode un model (ML/Stats)</h2>
+Arbre de décision, régression, clustering, Modèle graphique, SVM...
+<h2><span class="green">3. Interpréter les résultats (Vis)
+Graphiques, Data visualisation, Cartes...
+</section>
+
+<section>
+<h1>Des compétences clés</h1>
+<h2 class="blue">Data Munging, ETL (Extract / Load / Transform) </h2>
+Récupérer, mélanger, enrichir, filtrer, nettoyer, vérifier, formater, transformer des données
+<h2 class="red">Fouille de données, Statistiques, DAD (Discover / Access / Distill) </h2>
+Analyse de données traditionnelle 
+<h2 class="green">Visualisation, DAD (Discover / Access / Distill) </h2>
+Graphiques, Data visualisation, Cartes...
+</section>
+
+<section>
+<h1 class ="green">2 profiles types </h1>
+<ul>
+<li><h4 class="red">Data-Engineers :</h4> ETL (Extract / Load / Transform) is for data engineers, or sometimes data architects or DBA's
+<li><h4 class="blue">Data-scientist :</h4> DAD (Discover / Access / Distill) is for data scientists.
+<img src="./images/datscdataeng.jpg">
+</section>
+
+
+
+<section style="text-align:center;padding-top:5em">
+<h1>Plan du cours</h1>
+<h1 class="blue">Data-munging  (1 séance)</h1>
+<h1 class="red">Fouille de données, apprentissage statistiques  (4 séances)</h1>
+<h1 class="green">Visualisation (1 séance)</h1>
+</section>
+
+<section>
+<h1 class="blue">Data-munging  (1 séances)</h1>
+<ol>
+<li>les fichiers textes csv, json, xml, ... et la ligne de commande</li>
+<li>enrichir un jeu de données, trouver des données, et les manipuler en python avec pandas</li>
+<li>api, web et scraping, ... </li>
+</ol>
+</section>
+
+<section>
+<h1 class="red">Fouille de données, apprentissage statistiques  (3 séances)</h1>
+<ol>
+<li>trouver des groupes homogènes; le clustering: k-means, cah, modèle de mélange et dbscan  (avec scikit-learn)</li>
+<li>apprendre à partir d'exemples labellisés; la classification : svm, arbre de décision, arbre de décision boosté  (avec scikit-learn)</li>
+<li>réseau de neuronnes  (avec keras)</li>
+</ol>
+</section>
+
+
+
+<section>
+<h1 class="green">Visualisation  (1 séances)</h1>
+<ol>
+<li>introduction à la visualisation, bonnes pratiques & erreurs communes</li>
+<li>le web html, css, js, svg et d3 </li>
+<li>d3 suite
+<li>carte web leaflet
+</ol>
+</section>
+
+<section>
+<h1>Quelques exemples de projets</h1>
+<a href="http://vlsstats.ifsttar.fr/atNight/">
+<img src="images/atnightsmall.png" height="50%"></img>
+<h4 style="text-align:center">http://vlsstats.ifsttar.fr/atNight/</h4>
+</a>
+</section>
+
+
+<section style="background-color:white;color:black;background:url(https://www.comeetie.fr/assets/img/metro.png);background-size:cover;">
+<h1>Quelques exemples de projets</h1>
+<h4 style="text-align:center" class="shadow"><a href="https://www.comeetie.fr/galerie/sankeystif/">
+https://www.comeetie.fr/galerie/sankeystif/</a></h4>
+</section>
+
+
+
+<section style="background-color:white;color:black;background:url(https://www.comeetie.fr/assets/img/velib.png);background-size:cover;">
+<h1>Quelques exemples de projets</h1>
+<h4 style="text-align:center" class="shadow"><a href="https://www.comeetie.fr/galerie/velib/">
+https://www.comeetie.fr/galerie/velib/</h4>
+</a>
+</section>
+
+
+
+<section>
+<h1>Quelques exemples de projets</h1>
+<h4> Prédiction de charge dans le métro</h4>
+<img src="./images/thomasbap1.png" height="70%"></section></img>
+</section>
+
+
+
+<section>
+<h1>Quelques exemples de projets</h1>
+<h4> Prédiction de charge dans le métro</h4>
+<img src="./images/thomasbap2.png" width="70%"></section></img>
+</section>
+
+<section>
+<h1>Quelques exemples de projets</h1>
+<h4> Décomposition des flux passagers à la défense</h4>
+<img src="./images/paulde1.png" height="60%"></section></img>
+</section>
+
+
+
+
+
+
+
+<section>
+<h1>Quelques pointeurs</h1>
+<ul>
+<li>Site web du cours : <a href="http://github.com/comeetie/introml">http://www.comeetie.fr/m2mlv/</a>
+<li>Mon adresse mail : <a href="mailto:etienne.come@univ-eiffel.Fr">etienne.come@ifsttar.fr</a>
+<li>Mon compte twitter : <a href="http://www.twitter.com/comeetie">@comeetie</a>
+<li>Outils en ligne : <a href="http://www.google.com">Google</a>,<a href="http://www.StackOverflow.com">StackOverflow</a>,<a href="http://www.hackpad.com">HackPad</a>, <a href="http://www.github.com">gitHub</a>, <a href="http://bl.ocks.org/">bl.ocks</a>, <a href="http://www.github.io">github.io</a>
+<li>Cours intéressants : <a href="http://harvarddatascience.com/2013/02/20/introduction-to-computing-modeling-and-visualization-first-lectures-of-stat-221/">Stat221 (Harvard)</a>,
+<a href="http://vis.berkeley.edu/courses/cs294-10-sp11/wiki/index.php/CS294-10_Visualization">CS294-10 (Berkley)</a>, <a href="http://amplab.github.io/datascience-sp14/"> CS194-16 (Berkley)</a>
+<ul>
+</section>
+
+<section>
+<h1>Questions ?</h1>
+</section>
+
+<section class="exercice">
+<h1>Manipulation de données en python </br> Numpy & pandas</h1>
+
+<ul>
+  <li> <a href="https://jupyter.brynmawr.edu/services/public/dblank/CS245%20Programming%20Languages/2016-Fall/Labs/Chapter%2002%20-%20Introduction%20to%20Python.ipynb"> intro python </a>
+  <li> <a href="https://github.com/rasbt/numpy-intro-blogarticle-2020/blob/master/scipython__blog.ipynb"> intro numpy </a>
+  <li> <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html"> intro pandas </a>
+</ul>
+
+<a href="https://jupyter.org/install">installez jupyter notebook</a>
+
+Si vous n'avez pas python d'installez vous pouvez télécharger et installer la distribution conda.
+<a href="https://www.anaconda.com/products/individual">https://www.anaconda.com/products/individual</a>
+
+
+</section>
+
+
+
+<section class="exercice">
+<h1>TP Analyse du jeu de données des prénoms / années / départment 1946- 2006</h1>
+<img src="../notebooks/prenoms.gif" height="70%">
+<a href ="../notebooks/">données et correction<a/>
+</section>
+
+
+<section style="background-color:white;color:black">
+<h1 class="green"><a href="http://scikit-learn.org">Scikit Learn</a></h1>
+<img src="./images/ml_map.png" height="85%"></img>
+</section>
+
+<section style="background-color:white;color:black">
+<h1 class="green">Apprentissage supervisé </h1>
+$$\{(x_1,y_1),...,(x_n,y_n)\}$$
+$$f: \mathcal{X}\rightarrow \mathcal{Y}$$
+<ul>
+  <li> Classification $\mathcal{Y}=\{1,...,K\}$
+  <li> Régression $\mathcal{Y}=R$
+</ul>
+
+<h1 class="green">Apprentissage non-supervisé </h1>
+$${(x_1,y_1),...,x_n,y_n}$$
+<ul>
+  <li> Clustering
+  <li> Réduction de dimension 
+</ul>
+<img src="./images/ml_map.png" height="85%"></img>
+</section>
+
+
+<script src="../../library/d3.v3.min.js"></script>
+<script src="../../library/stack.v1.min.js"></script>
+<link rel="stylesheet" href="../../library/styles/hybrid.css">
+<script src="../../library/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+
+var mystack = stack()
+    .on("activate", activate)
+    .on("deactivate", deactivate);
+
+var section = d3.selectAll("section"),
+    follow = d3.select("#follow"),
+    followAnchor = d3.select("#follow-anchor"),
+    lorenz = d3.select("#lorenz"),
+    followIndex = section[0].indexOf(follow.node()),
+    lorenzIndex = section[0].indexOf(lorenz.node());
+
+function refollow() {
+  followAnchor.style("top", (followIndex + (1 - mystack.scrollRatio()) / 2 - d3.event.offset) * 100 + "%");
+}
+
+function activate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", refollow);
+  if (i === lorenzIndex) startLorenz();
+}
+
+function deactivate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", null);
+  if (i === lorenzIndex) stopLorenz();
+}
+
+
+</script>

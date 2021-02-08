@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<style>
+
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
+@import url(http://fonts.googleapis.com/css?family=Contrail+One:400,700);
+
+</style>
+<link rel="stylesheet" type="text/css" href="../../library/common.css" />
+<link rel="stylesheet" type="text/css" href="../../library/screen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../../library/print.css" media="print" />
+</head>
+
+<section style="text-align:center;padding-top:5em;">
+  <h1><span class="green">Introduction à la data-science et à ses outils   </span></h1></br> <h2><p class="grey">Master IM, Paris 5</h2>
+  <a href="http://www.twiter.com/comeetie">@comeetie</a>
+</section>
+
+<section style="text-align:center;padding-top:5em;">
+  <h1><span class="green">Data Science Hacking Basics </span></h1></br> <h2>avec Linux, python, et Chrome<br> <p class="grey">Master IM, Paris 5</h2>
+  <a href="http://www.twiter.com/comeetie">@comeetie</a>
+</section>
+
+<section > <h1><span class="purple">Data Science ?</span></h1><br/>
+<h4>“The next sexy job”</h4> 
+</br>
+<h4>“The ability to take data to be able to understand it, to process 
+it, to extract value from it, to visualize it, to communicate it,
+that’s going to be a hugely important skill.” </h4>
+<span class="red"> -- Hal Varian, Google</span>
+</section>
+
+
+
+<section > <h1><span class="purple">Data Science ?</span></h1><br/>
+<h4>“Data science, as it's practiced, is a blend of <span class="green">Red-Bull-fueled 
+hacking</span> and <span class="blue">espresso-inspired statistics</span>.” </h4> 
+</br>
+<h4>“Data science is the civil engineering of data. Its acolytes 
+possess a practical knowledge of tools & materials, coupled 
+with a theoretical understanding of what's possible.” </h4>
+<span class="green"> -- Mike Driscoll, CEO of metamarkets:</span>
+</section>
+
+<section style="background-color:white;color:black">
+<h1>Drew Conway’s Data Science Venn Diagram</h1>
+<img src="./images/VennDiagram.png" height="60%">
+</section>
+
+<section > <h1><span class="purple">Data Science ?</span></h1><br/>
+
+<h4>“A data scientist is someone who can <span class="red">obtain, scrub, explore, model 
+and interpret data</span>, blending <span class="blue">hacking, statistics and machine 
+learning</span>. Data scientists not only are adept at working with data, but 
+appreciate data itself as a first-class product.” </h4>
+<span class="blue"> -- Hilary Mason, chief scientist at bit.ly</span>
+</section>
+
+<section>
+<h4>Parler de la donnée, c'est aussi évoquer le datascientist, ce mouton à 5 pattes de la data disposant de compétences statistiques, informatiques, comprenant parfaitement les enjeux métier de l'entreprise... Est-il aussi un fantasme du discours ambiant sur le big data ?</h4>
+L-DB : S'il peut exister des profils qui s'approchent de cette description, la réalité démontre le plus souvent que la datascience, comme la science en générale, ne se produit pas seule mais en groupe. La bonne question à se poser est donc plutôt celle de la synchronisation des différentes compétences au sein de l'organisation. Nous plaidons davantage pour un datascientism que pour des datascientists.
+SC : Une autre réalité méconnue sur le datascientist est qu'il s'agit avant tout d'un métier d'artisan. Chaque problème et chaque jeu de données demande toujours une démarche spécifique qui n'est pas industrialisable, ce que beaucoup de gens ne comprennent pas encore.
+</section>
+
+
+<section>
+<h1>Un domaine en construction</h1>
+<blockquote class="twitter-tweet" lang="fr"><p>&quot;Data science: how is it different to statistics ?&quot; <a href="http://t.co/ULAGIeZDdR">http://t.co/ULAGIeZDdR</a> / by <a href="https://twitter.com/hadleywickham">@hadleywickham</a></p>&mdash; Arthur Charpentier (@freakonometrics) <a href="https://twitter.com/freakonometrics/status/507992032791781376">5 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+
+<section>
+<h1>Un domaine en construction</h1>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="fr"><p><a href="https://twitter.com/freakonometrics">@freakonometrics</a> <a href="https://twitter.com/hadleywickham">@hadleywickham</a> Statisticians not cleaning reshaping data? What have I been doing the last 10 years?</p>&mdash; Ralph Winters (@RDub2) <a href="https://twitter.com/RDub2/status/508006575454572544">5 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="fr"><p><a href="https://twitter.com/RDub2">@RDub2</a> they are, but they&#39;re not teaching/research it (by and large)</p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/508011479174365184">5 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</section>
+
+<section>
+<h1>Un domaine en construction</h1>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="fr"><p><a href="https://twitter.com/hadleywickham">@hadleywickham</a> I think the collection analysis, insight generation, cleaning, communication is multidisciplinary not just <a href="https://twitter.com/hashtag/ds?src=hash">#ds</a></p>&mdash; Ralph Winters (@RDub2) <a href="https://twitter.com/RDub2/status/508037306197241856">5 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" lang="fr"><p>.<a href="https://twitter.com/freakonometrics">@freakonometrics</a> <a href="https://twitter.com/hadleywickham">@hadleywickham</a>, please find my view on <a href="https://twitter.com/hashtag/BigData?src=hash">#BigData</a>, <a href="https://twitter.com/hashtag/DataScience?src=hash">#DataScience</a> + <a href="https://twitter.com/hashtag/Statistics?src=hash">#Statistics</a> at <a href="http://t.co/VXXIDWdTNi">http://t.co/VXXIDWdTNi</a> <a href="https://twitter.com/RDub2">@Rdub2</a></p>&mdash; Dr. Diego Kuonen (@DiegoKuonen) <a href="https://twitter.com/DiegoKuonen/status/508108135614406656">6 Septembre 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</section>
+
+
+<section style="background-color:white;color:black">
+<h1>Une mode anglo-saxone qui s'exporte</h1>
+<div style="text-align:center">
+<script type="text/javascript" src="//www.google.fr/trends/embed.js?hl=fr&q=big+data,+data+science&cmpt=q&content=1&cid=TIMESERIES_GRAPH_0&export=5&w=800"></script>
+</div>
+</section>
+<section style="background-color:white;color:black">
+<h1>Une mode anglo-saxone qui s'exporte</h1>
+<div style="text-align:center">
+<iframe width="620" height="500" src="//www.google.fr/trends/fetchComponent?hl=fr&q=big+data,+data+science&cmpt=q&content=1&cid=GEO_MAP_0_0&export=5&w=600&h=400" style="border: none;"></iframe>
+</div>
+</section>
+
+<section>
+<h1>avec des origines anciennes</h1>
+<img src="./images/640px-Johannes_Kepler_1610.jpg" height="60%">
+<h4 style="text-align:center"><a href="http://fr.wikipedia.org/wiki/Johannes_Kepler">Johann Kepler</a></h4>
+</section>
+
+
+<section >
+<h1>avec des origines anciennes</h1>
+<iframe width="100%" height="50%" scrolling="no" src="./Kepler.html" style="border: none;"></iframe>
+<h4 style="text-align:center"><a href="http://fr.wikipedia.org/wiki/Johannes_Kepler">Johann Kepler</a>, mbostock blo.cks // NYT </h4>
+</section>
+
+
+<section>
+<h1>avec des origines anciennes</h1>
+<img src="./images/minardportrait.jpg" height="60%">
+<h4 style="text-align:center">Charles-Joseph Minard</h4>
+</section>
+
+
+<section style="margin:10px;padding:0px;padding-top:1.5em" class="white">
+<a href="http://fr.wikipedia.org/wiki/Charles_Joseph_Minard#mediaviewer/File:Minard.png"><img src="./images/Minard.png" width="100%"></a>
+</section>
+
+<section>
+<h1>avec des origines anciennes</h1>
+<img src="./images/William_Sealy_Gosset.jpg" height="70%">
+<h4 style="text-align:center">William Sealy Gosset (Student)</h4>
+</section>
+
+
+
+<section>
+<h1>avec des origines anciennes</h1>
+<img src="./images/lovely_day_for_a_guinness_by_blackers33-d53729y.jpg" height="70%">
+<h4 style="text-align:center">William Sealy Gosset (Student)</h4>
+</section>
+
+
+
+<section>
+<h1>Des compétences clés</h1>
+<h2 class="blue">1. Préparer les données (DB) </h2>
+Récupérer, mélanger, enrichir, filtrer, nettoyer, vérifier, formater, transformer des données...
+<h2 class="red">2. Mettre en œuvre une méthode un modèle (ML/Stats)</h2>
+Arbre de décision, régression, clustering, Modèle graphique, SVM...
+<h2 class="green">3. Interpréter les résultats (Vis) </h2>
+Graphiques, Data visualisation, Cartes...
+</section>
+
+<section>
+<h1>Des compétences clés</h1>
+<h2><span class="blue">1. Préparer les données (DB)</span> -- 80% du boulot</h2>
+Récupérer, mélanger, enrichir, filtrer, nettoyer, vérifier, formater, transformer des données...
+<h2 class="red">2. Mettre en œuvre une méthode un model (ML/Stats)</h2>
+Arbre de décision, régression, clustering, Modèle graphique, SVM...
+<h2><span class="green">3. Interpréter les résultats (Vis)</span> -- 80% du boulot</h2>
+Graphiques, Data visualisation, Cartes...
+</section>
+
+<section>
+<h1>Des compétences clés</h1>
+<h2 class="blue">Data Munging, ETL (Extract / Load / Transform) </h2>
+Récupérer, mélanger, enrichir, filtrer, nettoyer, vérifier, formater, transformer des données
+<h2 class="red">Fouille de données, Statistiques, DAD (Discover / Access / Distill) </h2>
+Analyse de données traditionnelle 
+<h2 class="green">Visualisation, DAD (Discover / Access / Distill) </h2>
+Graphiques, Data visualisation, Cartes...
+</section>
+
+<section>
+<h1 class ="green">2 profiles types </h1>
+<ul>
+<li><h4 class="red">Data-Engineers :</h4> ETL (Extract / Load / Transform) is for data engineers, or sometimes data architects or DBA's
+<li><h4 class="blue">Data-scientist :</h4> DAD (Discover / Access / Distill) is for data scientists.
+<img src="./images/datscdataeng.jpg">
+</section>
+
+
+
+<section style="text-align:center;padding-top:5em">
+<h1>Plan du cours</h1>
+<h1 class="blue">Data-munging  (2 séances)</h1>
+<h1 class="red">Fouille de données, apprentissage statistiques  (2 séances)</h1>
+<h1 class="green">Visualisation  (2 séances)</h1>
+</section>
+
+<section>
+<h1 class="blue">Data-munging  (2 séances)</h1>
+<ol>
+<li>les fichiers textes csv, json, xml, ... et la ligne de commande</li>
+<li>enrichir un jeu de données, trouver des données, et les manipuler en python avec pandas</li>
+<li>api, web et scraping, ... </li>
+</ol>
+</section>
+
+<section>
+<h1 class="red">Fouille de données, apprentissage statistiques  (2 séances)</h1>
+<ol>
+<li>trouver des groupes homogènes; le clustering: k-means, cah, modèle de mélange et dbscan  (avec scikit-learn)</li>
+<li>apprendre à partir d'exemples labellisés; la classification : svm, arbre de décision, arbre de décision boosté  (avec scikit-learn)</li>
+</ol>
+</section>
+
+
+
+<section>
+<h1 class="green">Visualisation  (2 séances)</h1>
+<ol>
+<li>introduction à la visualisation, bonnes pratiques & erreurs communes</li>
+<li>le web html, css, js, svg et d3 </li>
+<li>d3 suite
+<li>carte web leaflet
+</ol>
+</section>
+
+
+<section style="background-color:white;color:black;background:url(images/lbcbig.jpg);background-size:cover;">
+<h1>Quelques exemples de projets</h1>
+<h4 style="text-align:center" class="shadow"><a href="http://www.comeetie.fr/map_lbc.php">
+http://www.comeetie.fr/map_lbc.php</a></h4>
+</section>
+
+<section style="background-color:white;color:black;background:url(images/francepixelsbig.jpg);background-size:cover;">
+<h1>Quelques exemples de projets</h1>
+<h4 style="text-align:center" class="shadow"><a href="http://www.comeetie.fr/galerie/francepixels/">
+http://www.comeetie.fr/galerie/francepixels/</h4>
+</a>
+</section>
+
+<section style="background-color:white;color:black">
+<h1>Quelques exemples de projets</h1>
+<a href="http://vlsstats.ifsttar.fr/">
+<img src="images/vlsstatsiconbig.png" height="50%"></img>
+<h4 style="text-align:center">http://vlsstats.ifsttar.fr/</h4>
+</a>
+</section>
+
+<section>
+<h1>Quelques exemples de projets</h1>
+<a href="http://vlsstats.ifsttar.fr/atNight/">
+<img src="images/atnightsmall.png" height="50%"></img>
+<h4 style="text-align:center">http://vlsstats.ifsttar.fr/atNight/</h4>
+</a>
+</section>
+
+<section>
+<h1>Quelques exemples de projets</h1>
+<a href="http://www.comeetie.fr/galerie/velib/index.html">
+<img src="images/velibsmall.jpg" height="50%"></img>
+<h4 style="text-align:center">http://www.comeetie.fr/galerie/velib/</h4>
+</a>
+</section>
+
+<section>
+<h1>Organisation du cours</h1>
+<h4>Cours orienté <span class="green">pratique et mise en œuvre</span></h4>
+<h4>Séances de 2x2 heures autour d'un cours-TP</h4>
+<h4>Outils principaux : linux, python et Chrome</h4>
+<h4>Présentation de notions et d'outils</h4>
+<h4>Exercices de mise en oeuvre pratique </h4>
+<h4 class="red"> + projet </h4>
+<h4 class="red"> + contrôle continu</h4>
+</section>
+
+
+
+<section>
+<h1 class="red">Les projets</h1>
+<p>Le projet doit vous permettre de mobiliser les différentes compétences et connaissances acquises pendant le cours et de mettre en avant votre créativité.</br>
+Pour ce faire vous vous diviserez en groupes de 2 ou 3, identifierez <span class="red">1 ou 2 jeux de données</span> que vous voulez étudier. Vous <span class="blue">les mettrez en forme et les visualiserez</span>. Lorsque vos données seront suffisamment propres vous pourrez utiliser une méthode de stats/ML : régression, classification, clustering et présenterez les résultats obtenus. </p>
+
+<p>Tout au long du projet vous tiendrez à jour un journal de bord au sein d'un notebook python listant vos problèmes et vos avancés.</p>  
+
+<p>La soumission consistera en ce journal de bord, un dépôt <a href="http://www.github.com">gitHub</a> contenant vos sources et vos données ainsi qu'une <span class="green">présentation de 10mn</span> </p>
+
+</section>
+
+<section>
+<h1 class="red">Les projets</h1>
+<h4>Calendrier</h4>
+<ul>
+<li>choix des binômes projet <span class="red">26/02/2016</span></li>
+<li>rendu des sujets de projets <span class="red">26/02/2016</span></li>
+<li>rendu final des projets <span class="red">14/03/2016</span></li>
+</ul>
+</section>
+
+<section>
+<h1 class="red">Le contrôle continu</h1>
+Interro de type cours ou exercice de tp, durée de 1h
+<h4>Calendrier</h4>
+<ul>
+<li>Interro 1 : <span class="red">26/02/2016</span></li>
+<li>Interro 2 : <span class="red">14/03/2016</span></li>
+</ul>
+</section>
+
+<section id="conv">
+<h1>Convention des slides</h1>
+<ul>
+<li> Les slides d'exercices sont en <span class="green">vert</a>
+<li> Les slides de corrections sont en <span class="red">rouge</a>
+<li> Les slides compétences sont en <span class="blue">bleu</a>
+<li> Les slides dédiés aux outils sont en <span class="purple">violet</a>
+<li> Les liens sont en <a href="#conv">orange</a>
+</ul>
+
+
+</section>
+
+<section>
+<h1>Quelques pointeurs</h1>
+<ul>
+<li>Site web du cours : <a href="http://www.comeetie.fr/m2mlv/">http://www.comeetie.fr/m2mlv/</a>
+<li>Mon adresse mail : <a href="mailto:etienne.come@ifsttar.fr">etienne.come@ifsttar.fr</a>
+<li>Mon compte twitter : <a href="http://www.twitter.com/comeetie">@comeetie</a>
+<li>Outils en ligne : <a href="http://www.google.com">Google</a>,<a href="http://www.StackOverflow.com">StackOverflow</a>,<a href="http://www.hackpad.com">HackPad</a>, <a href="http://www.github.com">gitHub</a>, <a href="http://bl.ocks.org/">bl.ocks</a>, <a href="http://www.github.io">github.io</a>
+<li>Cours intéressants : <a href="http://harvarddatascience.com/2013/02/20/introduction-to-computing-modeling-and-visualization-first-lectures-of-stat-221/">Stat221 (Harvard)</a>,
+<a href="http://vis.berkeley.edu/courses/cs294-10-sp11/wiki/index.php/CS294-10_Visualization">CS294-10 (Berkley)</a>, <a href="http://amplab.github.io/datascience-sp14/"> CS194-16 (Berkley)</a>
+<ul>
+</section>
+
+<section>
+<h1>Questions ?</h1>
+</section>
+
+<section>
+<h1 class="purple">Séance 1 </h1>
+<h2>Reprise en douceur avec des fondamentaux </h2>
+<h2 class="green">fichiers textes et ligne de commande</h2>
+</section>
+
+<section>
+<h1 class="purple">Fichiers textes</h1>
+Formats très simples et pérenne pour stocker des données et les échanger</br>
+Exemples : 
+<h3 class="green">CSV : Comma Separated Value</h3>
+<h3 class="red">XML : Extensible Markup Language</h3>
+<h3 class="blue">JSON : JavaScript Object Notation</h3>
+</section>
+
+<section>
+<h1 class="green"> Les fichiers type csv </h1>
+Fichier texte simple pour stocker des données tabulaire.</br>
+Les différentes variables sont séparées grâce à une 
+<h3>',' ou autre ';', '|', '#' et '\t'</h3>
+Possible de mettre une ligne pour le header
+<h4>Exemple</h4>
+<pre>
+"id" "mbikestands"
+16104 30.5303867403315
+15063 5.19337016574586
+17010 16.2651933701657
+13045 8.48066298342541
+10025 9.31491712707182
+...
+</pre>
+</section>
+
+
+<section class="competence">
+<h1>Compétence : </br>Savoir importer un fichier malgré des problèmes d'encodage et/ou de formatage</h1>
+</section>
+
+<section class="outil">
+
+<h1>La ligne de commande</h1>
+<h4>obtenir de l'aide</h4>
+<a href="http://en.wikipedia.org/wiki/Man_(Unix)">man</a>
+<h4>rediriger les sorties</h4>
+<a href="http://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande#Les_redirections_d.27entr.C3.A9es.2Fsorties"><, >, >>, ...</a>
+<h4>enchainer des commandes</h4>
+<a href="http://fr.wikipedia.org/wiki/Tube_(shell)">|</a> et <a href="http://fr.wikipedia.org/wiki/Bourne-Again_shell">script bash</a>
+<h4>afficher un fichier</h4>
+<a href="http://en.wikipedia.org/wiki/Head_(Unix)">head</a>, <a href="http://en.wikipedia.org/wiki/Tail_(Unix)">tail</a>, <a href="http://en.wikipedia.org/wiki/Cat_(Unix)">cat</a> et <a href="http://en.wikipedia.org/wiki/More_(Unix)">more</a>
+
+</section>
+
+
+
+
+
+<section class="outil">
+<h1>La ligne de commande</h1>
+<h4>analyser le fichier</h4>
+<a href="http://fr.wikipedia.org/wiki/Grep">grep</a> : global regular expression</br>
+Filtrer toute les lignes contenant 'tot'
+<pre><code class="c">grep tot fichier.txt</code></pre>
+Filtrer toute les lignes contenant un chiffre de 0 à 4 suivi d'un nombre quelconque de caractères et d'un chiffre de 5 à 9
+<pre><code class="c">grep '[01234].*[56789]' fichier.txt</code></pre>
+Filtrer toute les lignes commençant par un tirer
+<pre><code class="c">grep '^-' fichier.txt</code></pre>
+options -i, -n et -c,...
+</section>
+
+<section class="outil">
+<h1>La ligne de commande</h1>
+<h4>éditer le fichier</h4>
+<a href="http://fr.wikipedia.org/wiki/GNU_nano">nano</a> et <a href="http://fr.wikipedia.org/wiki/GNU_gedit"> gedit</a>
+<h4>modifier, analyser le fichier</h4>
+<a href="http://fr.wikipedia.org/wiki/Stream_Editor">sed</a> : stream editor (lecture ligne/ligne)</br>
+remplacer toutes les occurrences de "ficheir" par "fichier" :
+<pre><code class="c">sed -e 's/ficheir/fichier/g' fichier.txt > fichier.corrected.txt</code></pre>
+supprimer toutes les lignes vides :
+<pre><code class="c">sed -e '/^ *$/d' fichier.txt</code></pre>
+supprimer les lignes 7 à 9 :
+<pre><code class="c">sed '7,9d' fichier.txt</code></pre>
+</section>
+
+
+
+<section class="outil">
+<h1>La ligne de commande</h1>
+<h4>modifier, analyser le fichier</h4>
+<a href="http://fr.wikipedia.org/wiki/Stream_Editor">perl</a> : practical extraction and reporting language</br>
+substitution multiples et mise en mémoire des pattern matchés:
+<pre><code class="c"> perl -pe 's/last_update":([0-9]*)}/last_update":0000$1}/g'</code></pre>
+</section>
+
+<section class="outil">
+<h1>La ligne de commande</h1>
+<h4>problème d'encodage</h4>
+<a href="http://en.wikipedia.org/wiki/Iconv">file</a> : informations sur un fichier</br>
+<pre><code class="c">file -i fichier.txt -o fichier.utf8</code></pre>
+<a href="http://en.wikipedia.org/wiki/Iconv">iconv</a> : changement d'encodage</br>
+iso-8859 &rarr; utf8
+<pre><code class="c">iconv -f ISO-8859-1 -t UTF-8 fichier.txt -o fichier.utf8</code></pre>
+</section>
+
+<section class="outil">
+<h1>Packages python de bases</h1>
+<h1>numpy</h1>
+librarie de calcul numérique (<a href="http://docs.scipy.org/doc/numpy-1.10.1/reference/">doc</a>, <a href="https://docs.scipy.org/doc/numpy-dev/user/quickstart.html">intro</a>)
+<h1>pandas</h1>
+librairie de manipulation de données tabulaire (<a href="http://pandas.pydata.org/pandas-docs/stable">doc</a>, <a href="http://pandas.pydata.org/pandas-docs/stable/dsintro.html"> intro </a>)
+</section>
+
+<section class="outil">
+<h1>Import de fichiers type csv avec panda</h1>
+<pre><code class="python">import pandas as pd
+data = pd.read_csv("",...)</code></pre>
+<ul>
+<li>! au séparateur de champs
+<li>! à l'en-tête
+<li>! au conversion de chaîne de caractère en facteur
+<li>! au séparateurs décimaux : , ou .
+<li>! au séparateurs de chaîne de caractère " ou ' ?
+</ul>
+</section>
+
+
+<section class="exercice">
+<h1>Exercice (10 mn) : </br> 
+Importer proprement avec pandas le fichier <a href="../Donnees/exo1.csv">exo1.csv</a>. Vous vérifierez que les colonnes numériques sont bien lues en tant que telles.</h1>
+</section>
+
+<section>
+<h1 class="red"> Les fichiers JSON </h1>
+Fichier texte simple pour stocker des données semi-structurées</br>
+2 éléments imbriqués à l'envie :
+<ul>
+<li> objet : '{attribut1:valeur, attribut2:valeur,...}'</li>
+<li> tableau : '[objet1,objet2,...]'</li>
+</ul>
+<h4>Exemple</h4>
+<pre><code class="json">[{"_id" : "1/1/2014",
+  "value" : {"bikes" : 53972,"max_bikes" : 189}},
+ {"_id" : "1/10/2013",
+  "value" : {"bikes" : 48375,"max_bikes" : 175}}]</code>
+</pre>
+</section>
+
+
+
+
+<section class="competence">
+<h1>Compétence : </br>
+Savoir lire et remettre en forme un fichier JSON</h1>
+</section>
+
+
+<section class="exercice">
+<h1>Exercice (10mn): </h1>
+Créer la data.frame suivante : 
+<pre>
+"id" "mbikestands"
+"1" 16104 30.5303867403315
+"2" 15063 5.19337016574586
+"3" 17010 16.2651933701657
+"4" 13045 8.48066298342541
+...
+</pre>
+qui contient les id des stations velib et la moyenne du nombre de bornes disponibles sur la période enregistrée.</br>
+Pour cela vous utiliserez le fichier <a href="../Donnees/exo2.json">exo2.json</a> qui à la forme suivante :</br>
+tableau de stations ayant chacune une id (id) et trois tableaux associés; nombre de vélos (available_bikes), nombre de bornes (available_bike_stands), date de la mesures (download_date)
+</section>
+
+<section>
+<h1 class="green"> Les fichiers type XML</h1>
+<ul>
+<li>Fichier texte contenant des balises imbriquées
+<li>Chaque balise peut être décrite par différents attributs
+<li>Les balises et attributs devraient être décrit par une <i>dtd</i> et/ou des <i>namespaces</i>
+</ul>
+</br>
+<h4>Parser un fichiers</h4>
+2 méthodes :
+<ul>
+<li> SAX: api pour la lecture en ligne d'un document récupération d'évènements correspondant à la lecture d'une balise particulière
+<li> DOM: méthode de construction de l'arbre DOM du document
+</ul>
+</section>
+<section>
+<h4>Exemple</h4>
+<pre><code class="xml">&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;stations lastUpdate="1409819465886" version="2.0"&gt;
+&lt;station&gt;
+	&lt;id&gt;2&lt;/id&gt;
+	&lt;name&gt;Dézery/Ste-Catherine&lt;/name&gt;
+	&lt;terminalName&gt;6002&lt;/terminalName&gt;
+	...
+&lt;/station&gt;
+&lt;station&gt;
+	&lt;id&gt;3&lt;/id&gt;
+	&lt;name&gt;St-Maurice/ St-Henri&lt;/name&gt;
+	&lt;terminalName&gt;6003&lt;/terminalName&gt;
+	...
+&lt;/station&gt;
+&lt;/stations&gt;
+</code>
+</pre>
+</section>
+
+<section class="outil">
+<h1>Package xml.etree.ElementTree</h1>
+<ul>
+<li>permet de parser un fichier et de construire un arbre DOM
+<li>fournis des fonctions pour parcourir et extraire les données de l'arbre créer
+</ul></br>
+<h4>Exemple d'utilisation</h4>
+<pre><code class="python">import xml.etree.ElementTree as et
+data   = et.parse("exo3.xml") # parser le fichier
+xmltop    = data.getroot() # recupérer la racine
+stations  = xmltop.iter("stations") # itérateur sur les tag "station"
+for s in stations:
+	print s.find("id").text 
+</code>
+</pre>
+</section>
+
+
+<section class="exercice">
+<h1>Exercice (20mn)</h1>
+<h2>Construire à partir du fichier <a href="../Donnees/exo3.xml">exo3.xml</a> une dataframe contenant les variables suivantes :</h2>
+<h2> 
+'id','lat','long','nbBikes','nbEmptyDocks'
+</h2>
+</section>
+
+
+
+
+<script src="../../library/d3.v3.min.js"></script>
+<script src="../../library/stack.v1.min.js"></script>
+<link rel="stylesheet" href="../../library/styles/hybrid.css">
+<script src="../../library/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+
+var mystack = stack()
+    .on("activate", activate)
+    .on("deactivate", deactivate);
+
+var section = d3.selectAll("section"),
+    follow = d3.select("#follow"),
+    followAnchor = d3.select("#follow-anchor"),
+    lorenz = d3.select("#lorenz"),
+    followIndex = section[0].indexOf(follow.node()),
+    lorenzIndex = section[0].indexOf(lorenz.node());
+
+function refollow() {
+  followAnchor.style("top", (followIndex + (1 - mystack.scrollRatio()) / 2 - d3.event.offset) * 100 + "%");
+}
+
+function activate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", refollow);
+  if (i === lorenzIndex) startLorenz();
+}
+
+function deactivate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", null);
+  if (i === lorenzIndex) stopLorenz();
+}
+
+
+</script>

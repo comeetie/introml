@@ -8,9 +8,9 @@
 @import url(https://fonts.googleapis.com/css?family=Contrail+One:400,700);
 
 </style>
-<link rel="stylesheet" type="text/css" href="../../library/common.css" />
-<link rel="stylesheet" type="text/css" href="../../library/screen.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../../library/print.css" media="print" />
+<link rel="stylesheet" type="text/css" href="library/common.css" />
+<link rel="stylesheet" type="text/css" href="library/screen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="library/print.css" media="print" />
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
@@ -489,6 +489,356 @@ model.fit(data, labels)  # starts training
 <img src="./images/tensorplay.png" width="85%">
 <a href="http://playground.tensorflow.org">http://playground.tensorflow.org</a>
 </section>
+
+
+
+
+<section >
+
+<h1>Hyper parameters</h1>
+Réglage des hyperparamètres :
+<h4 class="green">Architecture :</h4>
+<ul>
+<li> number of layer
+<li> layer width
+<li> activations 
+<li> regularisation
+</ul>
+<h4 class="green"> Optimisation : </h4>
+<ul>
+<li> mini-batchs size
+<li> learning rates
+<li> number of epochs
+</ul>
+ </br>validation set
+</section>
+
+<section>
+<h1>Batch norm</h1>
+$$
+s = \frac{s-m_s}{\sqrt{\sigma_s^2+\epsilon}}
+$$
+<ul>
+<li> control mean and variance between layer
+<li> each input is controlled independantly
+<li> during training : mean and variance of thebatch
+<li> at testing : (mean variance) over entire train set 
+<ul>
+</section>
+
+
+<section>
+<h1>deep networks</h1>
+ <span class="red">! optimisation (vanishing gradient)</span>
+<h2 class="green">Relu</h2>
+<img src="./images/Activation_rectified_linear.svg" height="30%">
+<h2> + de gradient </h2>
+</section>
+
+
+<section>
+<h1>Regularisation noise injection</h1>
+<span class="red">Drop out</span>
+<ul>
+<li> During trainig disconnect randomly some weight with a probability $p$.
+<li> at testing, multiply the weightby their observed disconnection probability 
+</ul>
+<img src="./images/drop_out1.png" width="30%">
+<span class="small">Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., & Salakhutdinov, R. R. (2012). Improving neural networks by preventing co-adaptation of
+feature detectors. arXiv:1207.0580.</span>
+</section>
+
+<section>
+<h1>Regularisation, noise injection</h1>
+<span class="red">Drop out</span>
+<ul>
+<li> During trainig disconnect randomly some weight with a probability $p$.
+<li> at testing, multiply the weightby their observed disconnection probability 
+</ul>
+<img src="./images/drop_out2.png" width="30%">
+<span class="small">Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., & Salakhutdinov, R. R. (2012). Improving neural networks by preventing co-adaptation of
+feature detectors. arXiv:1207.0580.</span>
+</section>
+
+
+
+
+<section style="padding-top:5em;text-align:center">
+<h1>images, texte, séquences, série temporelle</h1>
+</section>
+
+
+<section>
+<h1>Modern networks</h1>
+<h4>Modular architecture</h4>
+may handle different data </br>
+<ul>
+<li> Denses layer (MLP) 
+<li> Convolutional layer (Images)
+<li> Recurrent layers (Sequences, temps)
+</ul>
+<h4>Combinaation ?</h4>
+<ul>
+<li> Stack different layers 
+<li> Genreci optimisation algorithm (Reverse Mode AD // BP) + SGD variants
+</ul>
+</section>
+<section style="padding-top:5em;text-align:center">
+<h1>CNN</h1>
+</section>
+
+<section >
+<h1>Images</h1>
+$\Rightarrow$ convolution, pooling, (translation invariance)
+<div style="text-align:center;height:80%" >
+<table style="margin:auto;height:80%">
+<tr><td>$\begin{bmatrix}0 & 1 & 0\\1 & -4 & 1\\0 & 1 & 0 \end{bmatrix}$</td>
+<td><img src="./images/generic-taj-convmatrix-edge-detect.jpg" height="95%"></img></td></tr>
+</table>
+</div>
+</section>
+
+<section>
+<h1>Convolution</h1>
+$\Rightarrow$ convolution, pooling, (translation invariance)
+<img src="./images/convlayer.gif" height="70%"></img>
+</section>
+
+<section>
+<h1>Convolution</h1>
+$\Rightarrow$ convolution, pooling, (translation invariance)
+<img src="./images/conv2layer.gif" height="70%"></img>
+</section>
+
+<section>
+<h1>Convolution</h1>
+$\Rightarrow$ convolution, pooling, (translation invariance)
+<img src="./images/cnn.png" height="70%"></img>
+</section>
+
+
+<section>
+<h1>Max pooling</h1>
+Compression
+<img src="./images/maxpool.gif" width="60%"></img>
+</section>
+
+
+<section >
+<h1>Images</h1>
+$\Rightarrow$ convolution, pooling, (translation invariance)
+<img src="./images/convnet.png" width="90%"></img>
+
+
+<span class="small">LeCun, Y. (1989). Generalization and network design strategies. Connections in Perspective. North-Holland, Amsterdam, 143-55.</br>
+LeCun, Y., Kavukcuoglu, K., & Farabet, C. (2010, May). Convolutional networks and applications in vision. In Circuits and Systems (ISCAS),
+Proceedings of 2010 IEEE International Symposium on (pp. 253-256). IEEE.</span>
+</section>
+
+
+<section >
+<h1>Images</h1>
+$\Rightarrow$ convolution, pooling, (translation invariance)
+<img src="./images/cnnlecun.png" height="40%"></img>
+<span class="small">LeCun, Y. (1989). Generalization and network design strategies. Connections in Perspective. North-Holland, Amsterdam, 143-55.</br>
+LeCun, Y., Kavukcuoglu, K., & Farabet, C. (2010, May). Convolutional networks and applications in vision. In Circuits and Systems (ISCAS),
+Proceedings of 2010 IEEE International Symposium on (pp. 253-256). IEEE.</span>
+</section>
+
+<section>
+<h1 class="red">CNN, Architecture type</h1>
+Image $\rightarrow\{1,...,K\}$
+<ul>
+<li> Convolutional blocks (n times)
+<ul>
+<li>Convolutional layer
+<li>Batch normalization
+<li>Relu activation
+<li>(Subsampling)
+</ul>
+<li>Dense blocks (n times)
+<ul>
+<li>Batch normalization
+<li>Dense layer (+ weights regularization)
+<li>Relu/Tanh activation
+</ul>
+<li>Final layer
+<ul>
+<li>Batch normalization + Dense + Softmax activation
+</ul>
+</ul>
+</section>
+
+
+<section >
+<h1>Sequences,/h1>
+<h3>Recurrent neural nets(RNN)</h3>
+LSTM, GRU :</br>
+<img src="./images/RNN-unrolled.png" width="50%" style="margin-top:1em">
+unfolded // classical NN with shared weights
+</section>
+
+
+<section>
+<h1>RNN</h1>
+<img src="images/rnn/architecture-rnn.png" width="50%"></img>
+$$a_t = \Phi(W_{aa}a_{t-1}+W_{ax}x_{t}+b_a)$$
+$$y_t = \Phi(W_{ya}a_{t}+b_y)$$
+</section>
+
+
+
+
+<section>
+<h1>Transfer learning</h1>
+<ul>
+<li>Use the first layer of a network learnt on an important dataset
+<li>"Finetuning" of the last layers on the target task. 
+</ul>
+<img src="./images/transfert.png" width="40%">
+</section>
+
+<section >
+<h1>Self supervised learning</h1>
+<ul>
+<li> Learn with a pretext task derived from unsupervised data</br>
+<span class="red">! (no labels but supervied) </span>
+<li>Use as first layer in final architecture 
+</ul>
+<img src="./images/pretext_selfsup2.png" height="60%">
+</section>
+
+<section >
+<h1>Self supervised learning</h1>
+<ul>
+<li> Learn with a pretext task derived from unsupervised data</br>
+<span class="red">! (no labels but supervied) </span>
+<li>Use as first layer in final architecture 
+</ul>
+<img src="./images/colorisation.png" height="60%">
+</section>
+
+
+
+
+<section >
+<h1>Self supervised learning</h1>
+<ul>
+<li> Learn with a pretext task derived from unsupervised data</br>
+<span class="red">! (no labels but supervied) </span>
+<li>Use as first layers in another model
+</ul>
+<img src="./images/pretext_selfsup.png" height="60%">
+</section>
+
+<section >
+<h1>Self supervised learning</h1>
+<ul>
+<li> Learn with a pretext task derived from unsupervised data</br>
+<span class="red">! (no labels but supervied) </span>
+<li>Use as first layers in another model
+</ul>
+<img src="./images/patch.png" height="60%">
+</section>
+
+
+
+
+<section >
+<h1>Texte, WordEmbedding</h1>
+<img src="./images/wordembedding.png" height="75%" style="margin-top:1em">
+</section>
+
+<section>
+<h1>Texte, WordEmbedding</h1>
+Predict next word
+
+<img src="./images/nn_language_model-1.jpg" height="55%" style="margin-top:1em">
+Bengio, Y., Ducharme, R., Vincent, P., & Janvin, C. (2003). A Neural Probabilistic Language Model. The Journal of Machine Learning Research, 3, 1137–1155. Retrieved from http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf ↩︎
+</section>
+
+<section>
+<h1>Texte, WordEmbedding</h1>
+Prédire le prochain mots:
+
+<ul>
+<li> <b>Embedding Layer</b>: produit le word embeding index vector . word embeding matrix</br>
+<li> <b>Intermediate Layer(s)</b>: consrtuction de représentation inetrmédiaires, e.g. a couches denses prenant en entrée la concatenation des embeddings des mots précedents;</br>
+<li> <b>Softmax Layer</b>: couche de décision produit une probabilité sur le vocabulaire V</br>
+</ul>
+</section>
+
+
+
+
+<section>
+<h1>Texte, WordEmbedding, CBOW</h1>
+predict a word from its context :
+
+<img src="./images/cbow.png" height="55%" style="margin-top:1em">
+Mikolov, T., Corrado, G., Chen, K., & Dean, J. (2013). Efficient Estimation of Word Representations in Vector Space. Proceedings of the International Conference on Learning Representations (ICLR 2013), 1–12. ↩︎
+
+</section>
+
+<section>
+
+<h1>Texte, WordEmbedding, CBOW</h1>
+predict a word from its context :<ul>
+<li> <b>Embedding Layer</b>:: index vector . word embeding matrix;
+<li> <b>Intermediate Layer(s)</b>: a simple mean of the context words embeddings 
+<li> <b>Softmax Layer</b>: decision layer distribution over vocabulary V
+</ul>
+</section>
+
+<section>
+<h1>Texte, WordEmbedding, CBOW</h1>
+The last layer is costly (|V| is big)
+$$p(w|c)=\frac{\exp(h^{t}v_{w})}{\sum_{w_i\in V}\exp(h^{t}v_{w_{i}})}$$
+Change a little bit the pretext task
+-> link with "Contrastive learning" / work with pairs of words
+</section>
+
+
+</section>
+<section>
+<h1>Texte CBOW + Negative sampling</h1>
+<h3>Pretexte task : close words // Random words</h3>
+$\Rightarrow$ one-hot encoding, of the words  $(0,0,...,1,...,0,0)$</br>
+position in the dictionnary
+
+<h4>Example wordEmbeding :</h4> 
+<ul>
+<li> $\mathbf{z}_1 = \mathbf{x}_1^t\mathbf{V}$
+<li> $\mathbf{z}_2 = \mathbf{x}_2^t\mathbf{V}$
+<li> $s = \frac{\mathbf{z}_1^t\mathbf{z}_2}{||\mathbf{z}_1||||\mathbf{z}_2||}$
+<li> $y = sigmoid(s)$
+</ul>
+</br>
+<h4>Training set :</h4>
+<ul>
+<li>pairs of words $(\mathbf{x}_1,\mathbf{x}_2)$ that we observe in a small window ($y=1$)
+<li>pairs of random words $(\mathbf{x}_1,\mathbf{x}_2)$  ($y=0$)
+</ul>
+$\Rightarrow \mathbf{V}$ embedding each words is now associated with a $d$ dimensional vector that can be used in place of the words for other task.  
+</section>
+
+
+<section>
+<h1>Texte CBOW + Negative sampling</h1>
+
+<h3>Tâche pretexte : Mots proche // Mots distants</h3>
+
+<h4>Training set building</h4>
+<ul>
+<li> How many negative sample per positive sample <i>(nb_neg)</i>
+<li> How to draw random words (smoothed unigram distribution, $\alpha$) 
+$$ps_{w_i}^\alpha= \frac{\#w_i^{\alpha}}{\sum_j\#w_j^\alpha}$$
+<li> Sub sampling of common words ($t$)
+$$ pr_{w_i} = 1 -\sqrt(\frac{t}{ps_{w_i}^1})$$
+</ul>
+</section>
+
+
 
 <section>
 <h1> Links and ressources </h1>

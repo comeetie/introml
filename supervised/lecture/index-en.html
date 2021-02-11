@@ -22,12 +22,12 @@
     },
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
-</script>00
+</script>
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 
 </head>
 <section style="text-align:center;padding-top:5em;">
-  <h1><span class="green">Introduction to DS/ML  </span></h1></br> <h2><p class="grey">Master, UGE</h2>
+  <h1><span class="green">Introduction to ML  </span></h1></br> <h2><p class="grey">Master, UGE</h2>
   <a href="http://www.twiter.com/comeetie">@comeetie</a>
 </section>
 
@@ -44,30 +44,31 @@
 
 
 <ul>
-<li> Apprentissage supervisé
+<li> Supervised learning
 <li> Data : 
 </ul>
-Données d'apprentissage :
+Trainning data :
 $$\{(\mathbf{x}_1,y_1),...,(\mathbf{x}_N,y_N)\}, \mathbf{x_i} \in \mathcal{R}^p,\,y_i \in \{G_1,...,G_K\}$$
 
-<h3 class="red">Objectif : </h3>
+<h3 class="red">Goal : </h3>
 
-Trouver $f$ :  $f(x) \sim y$ pour prédire $y$ avec de nouveaux $x$</br>
-<span class="green">Exemple : </span>  e-mail :  spam / non spam contenu + meta-data
+Find a function $f$ : such that $f(x) \sim y$ to predict $y$ for new $x$</br>
+<span class="green">Example : </span> predict if an e-mail is a spam or not from content and meta-data
 </section>
 
 <section style="background-color:white;color:black">
+
 <h1 class="green" >Classification ?</h1>
 <ul>
-<li> $\neq$ Regression ou $y$ est un réel
+<li> $\neq$ Regression where $y$ is a real value
 </ul>
 Data :
 $$\{(\mathbf{x}_1,y_1),...,(\mathbf{x}_N,y_N)\}, \mathbf{x_i} \in \mathcal{R}^p,\,y_i \in \mathbb{R}$$
 
 <h3 class="red">Objectif : </h3>
 
-Trouver $f$ :  $f(x) \sim y$ pour prédire $y$ avec de nouveaux $x$</br>
-<span class="green">Exemple : </span> y=consomation electrique, x=information sur le ménage, la maison, la météo, le calendrié
+Find $f$ : $f(x) \sim y$ to predict $y\in\mathcal{R}$ for new values of $x$</br>
+<span class="green">Example : </span> y=electrical consumption, x=houseold information, house description, meteo,calendar information
 </section>
 
 <section style="background-color:white;color:black">
@@ -86,25 +87,25 @@ Trouver $f$ :  $f(x) \sim y$ pour prédire $y$ avec de nouveaux $x$</br>
 </section>
 
 <section style="background-color:white;color:black">
-<h1 class="green" >Apprentissage supervisé</h1>
-Espace des hypothèses:
+<h1 class="green" >Supervised learning</h1>
+Hypothesys space:
 <ul>
-<li> $f$ appartient a une famille de fonction $\mathcal{H}$ qui dépend de la méthode et d'hyper-paramètre (SVM, MLP, Decision Tree, Random Forest,...):
+<li> $f$ belong to a familly of function $\mathcal{H}$ defined by the methods and the hyper-parameters (SVM, MLP, Decision Tree, Random Forest,...):
 $f\in\mathcal{H}$
-<li> trouver la meilleure fonction $f$ dans $\mathcal{H}$
+<li> find the best $f$ in $\mathcal{H}$
 </ul>
-<h2 class="red"> La meilleure ? Erreur de généralisation</h2>
+<h2 class="red"> Goal minimize the generalisation error</h2>
 $$R(f)=\mathbb{E}_{\mathcal{X},\mathcal{y}}[L(f(\mathbf{x}),y)]=\int_{\mathcal{X}}\int_{\mathcal{y}}L(f(\mathbf{x}),y)p(\mathbf{x},y)d\mathbf{x}dy$$
-$L(.,.)$ : fonction de cout i.e "loss" $f$ 
+$L(.,.)$ : loss function that quantify the errors of $f$ 
 </section>
 
 
 <section style="background-color:white;color:black">
-<h2 class="red">Regression, loss fonction :</h2>
+<h2 class="red">Regression, loss function :</h2>
 $\mathcal{Y}=\mathbb{R}$, mean square error :
 $L(f(\mathbf{x},y)=(f(\mathbf{x})-y)^2$
 <img src="./images/kernel_ridge.png" height="55%" style="margin-top:1em">
-<span class="green">Exemple : </span> y=electrical consumption, x=houseold information, house description, meteo,calendar information
+<span class="green">Example : </span> y=electrical consumption, x=houseold information, house description, meteo,calendar information
 </section>
 
 <section style="background-color:white;color:black">
@@ -118,45 +119,27 @@ Ex: $y:\{spam, notspam\}$, $\mathbf{x}$ : e-mail data
 </section>
 
 <section style="background-color:white;color:black">
-<h2 class="red">Risque empirique</h2>
+<h2 class="red">Empirical risk</h2>
 $S=(\mathbf{x},y):\{(\mathbf{x}_1,y_1),...,(\mathbf{x}_n,y_n)\}$
 $$R_S(f)=\frac{1}{n}\sum_{i=1}^nL(f(\mathbf{x}_i),y_i)$$
 $$\mathbb{E}[R_S(f)]=R(f)$$
 </section>
 
 <section style="background-color:white;color:black">
-<h2 class="red">Minimisation du risque empirique</h2>
-$f$ définie par un vecteur de paramètres $\color{red}{\mathbf{w}}$, 
+<h2 class="red">Empirical risk minimisation</h2>
+$f$ is described by a set of parameters $\color{red}{\mathbf{w}}$, 
 $$f(\mathbf{x};\color{red}{\mathbf{w}})$$
-Trouver $f$ (i.e trouver $\color{red}{\mathbf{w}}$) qui minimise le risque empirique 
+Select $f$ (and thus $\color{red}{\mathbf{w}}$) who minimize the empirical risk 
 $$\color{red}{\mathbf{\hat{w}}}=\arg\min_{\color{red}{\mathbf{w}}}R_{S_a}(\color{red}{\mathbf{w}})=\arg\min_{\color{red}{\mathbf{w}}}\frac{1}{n}\sum_{i=1}^nL(f(\mathbf{x}_i,\color{red}{\mathbf{w}}),y_i)$$
-</section>
-
-<section style="background-color:white;color:black">
-<h2 class="red">Exemple regression</h2>
-$\mathcal{H}: f(\mathbf{x})= \mathbf{x}^Tw = \mathbf{x}^1w_1+...+\mathbf{x}^pw_p$ i.e fonctions linéaires, </br>
-Loss : mse, risque empirique :
-$$\sum_{i=1}^n(\mathbf{x}_i^Tw-y_i)^2$$
-$$\hat{w} = (X^TX)^{-1}(X^Ty)$$
-</section>
-
-
-<section style="background-color:white;color:black">
-<h2 class="red">Exemple regression</h2>
-$\mathcal{H}: f(\mathbf{x})= [\mathbf{x},\mathbf{x}^2]^Tw$  i.e fonctions quadratiques, </br>
-L
-Loss : mse, risque empirique :
-$$\sum_{i=1}^n(\mathbf{x}_i^Tw-y_i)^2$$
-$$\hat{w} = (X^TX)^{-1}(X^Ty)$$
 </section>
 
 
 <section style="background-color:white;color:black">
 <h1 class="green" ></h1>
 <h3> Training set / Test set</h3>
-$f(\mathbf{x})=f(\mathbf{x},\color{red}{\mathbf{w}})$ plus ou moins complexe (controler la complexité)
+$f(\mathbf{x})=f(\mathbf{x},\color{red}{\mathbf{w}})$ may be more or less complex (control the complexity)
 <img src="./images/biais_variance.png" height=50%>
-<span class="red"> ! nous cherchons une fonction qui va bien fonctionner sur de nouveaux exemples
+<span class="red"> ! don't memorize the training data must work on new sample
 </section>
 
 
@@ -164,14 +147,14 @@ $f(\mathbf{x})=f(\mathbf{x},\color{red}{\mathbf{w}})$ plus ou moins complexe (co
 <h1 class="green" >Classification supervisé</h1>
 <h3> Trainning data / Test data</h3>
 <ul>
-<li> estimation de l'erreur de généralisation $\sim 70\%$ (Training), $\sim 30\%$ (Test)
-<li> 
+<li> unbiased estimator of generalisation error $\sim 70\%$ (Training), $\sim 30\%$ (Test)
+<li> Try to estimate the generalisation error
 </ul>
 <h3 class="red">Cross validation: </h3>
 <ul> 
-<li> découper en $V$ group.
-<li> pour chaque groupe calculer le risque empirique du modèle appris avec les autres groupes 
-<li> moyénner les erreurs
+<li> split in $V$ groups.
+<li> for each group estimate the empirical risk on the group with remaining as training data 
+<li> average the error
 </ul>
 </section>
 
@@ -180,8 +163,8 @@ $f(\mathbf{x})=f(\mathbf{x},\color{red}{\mathbf{w}})$ plus ou moins complexe (co
 <section style="background-color:white;color:black">
 
 <h1 class="green" >Classification, </h1>
-performances de $f$
-<h4>Matrice de confusion</h4>
+how to measure the performance of $f$
+<h4>Confusion matrix</h4>
 $$C_{kl}\, = \#(y_i=c_k \cap \hat{f}(\mathbf{x}_i)=c_l)$$
 <img src="./images/confusion.png" height="50%">
 </section>
@@ -190,8 +173,8 @@ $$C_{kl}\, = \#(y_i=c_k \cap \hat{f}(\mathbf{x}_i)=c_l)$$
 <section style="background-color:white;color:black">
 
 <h1 class="green" >Classification,</h1>
- performances de $f$
-<h4>Matrice de confusion</h4>
+ how to measure the performance of $f$
+<h4>Confusion matrix</h4>
 $$C_{kl}\, = \#(y_i=c_k \cap \hat{f}(\mathbf{x}_i)=c_l)$$
 <img src="./images/contable.png" height="50%">
 https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers
@@ -201,11 +184,28 @@ https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers
 
 
 <section style="padding-top:5em">
-<h1>Quelques Classifieurs</h1>
+<h1>Some classifiers</h1>
 </section>
 
 
+<section style="padding-top:5em;text-align:center">
+<h1>K nearest neighbours</h1>
+</section>
 
+<section style="background-color:white;color:black">
+<h1 class="blue">K nearest neighbours</h1>
+To predict the class of a new point $\mathbf{x}$:
+<ul>
+<li> Find the k points $\{i_1,...,i_k\}$ in the training data that are the nearest neighbours of $\mathbf{x}$
+<li> Make them vote by majority to predict the label
+</ul>
+<h3>Remarks</h3>
+<ul>
+<li>Hyper-Parameter $k$, 
+<li>No true learning algorithm = just memorize the training data, 
+<li>Computational time for prediction != learning
+</ul>
+</section>
 
 <section style="padding-top:5em;text-align:center">
 <h1>Regression logistic</h1>
@@ -215,43 +215,14 @@ https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers
 <h1 class="blue">Regression logistic</h1>
 $$P(y=c_k|\mathbf{x})=\frac{exp(\beta_k^{t}\mathbf{x})}{\sum_{h=1}^{K}exp(\beta_h^{t}\mathbf{x})}$$
 <ul>
-<li>Apprentissage = trouver les $\beta$ (maximum de vraissemblance)
+<li>Learning = find the $\beta$ by maximum likelihood
 $$\hat{\beta_1},...,\hat{\beta}_k=\arg\max \prod_{i=1}^{N}\prod_{k=1}^{K}P(y=c_k|\mathbf{x_i})^{1_{y_i=G_k}}$$
-</ul>
-</section>
-
-<section style="background-color:white;color:black">
-<h1 class="blue">Regression logistic</h1>
-$$P(y=c_k|\mathbf{x})=\frac{exp(\beta_k^{t}\mathbf{x})}{\sum_{h=1}^{K}exp(\beta_h^{t}\mathbf{x})}$$
-<ul>
-<li>Apprentissage = trouver les $\beta$ 
 <li>loss function = categorical cross entropy = $−(y\log(p)+(1−y)\log(1−p))$
-<li>problème d'optimisation (convexe)
-<li>Frontière de décision linéaires
+<li>convex optimisation problem
+<li>Decision boundaries are linear
+<li>
 </ul>
 </section>
-
-
-<section style="padding-top:5em;text-align:center">
-<h1>K nearest neighbours Kppv</h1>
-</section>
-
-<section style="background-color:white;color:black">
-<h1 class="blue">K nearest neighbours K-ppv</h1>
-Pour prédire un nouveau point $\mathbf{x}$:
-<ul>
-<li> Trouver les k exemple $\{i_1,...,i_k\}$ les plus proches de $\mathbf{x}$ dans les données d'apprentissage
-<li> Vote majoritaire pour obtennir une prédiction
-</ul>
-<h3>Remarque</h3>
-<ul>
-<li>Hyper-Parametre $k$, 
-<li>Apprentissage = "mémorisation du jeu de données"
-<li>! cout algorithmique lors de la prédiction
-<li> attention au claul de distance ! i.e centrage réduction
-</ul>
-</section>
-
 
 
 <section style="padding-top:5em;text-align:center">
@@ -267,48 +238,48 @@ Pour prédire un nouveau point $\mathbf{x}$:
 </section>
 <section style="background-color:white;color:black">
 <h1 class="blue">SVM</h1>
-<h3> Frontière de décision optimale</h3>
-cas séparable
+<h3> Optimal decision boundary</h3>
+separable case
 <img src="images/svm1.png" height="60%">
 </section>
 
 
 <section style="background-color:white;color:black">
 <h1 class="blue">SVM</h1>
-<h3> Frontière de décision optimale</h3>
-cas séparable
+<h3> Optimal decision boundary</h3>
+separable case
 <img src="images/svm2.png" height="60%">
 </section>
 
 <section style="background-color:white;color:black">
 <h1 class="blue">SVM</h1>
-<h3> Frontière de décision optimale</h3>
-cas séparable
+<h3> Optimal decision boundary</h3>
+separable case
 <img src="images/svm3.png" height="60%">
 </section>
 
 <section style="background-color:white;color:black">
 <h1 class="blue">SVM</h1>
-<h3> Frontière de décision optimale</h3>
-cas séparable
+<h3> Optimal decision boundary</h3>
+separable case
 <img src="images/svm4.png" height="60%">
 </section>
 
 <section style="background-color:white;color:black">
 <h1 class="blue">SVM</h1>
-<h3> Frontière de décision optimale</h3>
-cas séparable
+<h3> Optimal decision boundary</h3>
+separable case
 <img src="images/svm4.png" height="30%">
-avec $y_i\in\{-1,1\}$ = binary case
+with $y_i\in\{-1,1\}$ = binary case
 $$\hat{w},\hat{b} = \arg\min_{w}||w||$$
-avec $y_i(w^t\mathbf{w}+b)-1>0,\,\forall i \in\{1,...,N\}$
+with $y_i(w^t\mathbf{w}+b)-1>0,\,\forall i \in\{1,...,N\}$
 </section>
 
 
 <section style="background-color:white;color:black">
 <h1 class="blue">SVM</h1>
-<h3> Frontière de décision optimale</h3>
-cas non séparable
+<h3> Optimal decision boundary</h3>
+non separable case
 <img src="images/svm5.png" height="60%">
 </section>
 
@@ -316,20 +287,20 @@ cas non séparable
 
 <section style="background-color:white;color:black">
 <h1 class="blue">SVM</h1>
-<h3> Frontière de décision optimale</h3>
-cas non séparable
+<h3> Optimal decision boundary</h3>
+non separable case
 <img src="images/svm5.png" height="30%">
 $$\hat{w},\hat{b} = \arg\min_{w}||w||+C\sum_{i=1}^{N}max(0,1-y_i(w^t\mathbf{w}+b))$$
 </section>
 
 <section style="background-color:white;color:black">
 <h1 class="blue">SVM</h1>
-<h3> Remarques </h3>
+<h3> Remarks </h3>
 <ul>
-<li> Problème convexe
-<li> peut être "Kerneliser" = ré-écrit avec uniquement des produits scalaires
-<li> solution parcimonieuse qui utilise uniquement quelques point 
-<h3 class="purple">"vecteurs supports"</h3>
+<li> convex problem
+<li> can be "Kernelised" = re-written by using only dot products
+<li> parcimonious solution that only use the 
+<h3 class="purple">"supports vectors"</h3>
 </ul>
 </section>
 
@@ -339,15 +310,14 @@ $$\hat{w},\hat{b} = \arg\min_{w}||w||+C\sum_{i=1}^{N}max(0,1-y_i(w^t\mathbf{w}+b
 
 <section style="background-color:white;color:black">
 <h1 class="blue">SVM</h1>
-<h3> Kernel/ Noyau</h3>
+<h3> Kernel</h3>
 <ul>
-<li> Kernel = produit scalaire dans un autre espace
-  $$K(\mathbf{x}_i,\mathbf{x}_j)=<\phi(\mathbf{x}_i),\phi(\mathbf{x}_j)>$$
-<li> transformation non linéaire 
-<li> kernel classique = noyau gaussian </br>
-(equivalent a un produit scalaire dans  un espace infini ;)
+<li> Kernel = do ptoduct but in a different space
+<li> non linear trabsformation
+<li> classical kernel = gaussian kernel </br>
+(dot product in an infinite space !)
 </ul>
-<img src="./images/ex_kernel.png" height="30%">
+<img src="./images/ex_kernel.png" height="50%">
 </section>
 
 <section style="padding-top:5em;text-align:center">
@@ -364,19 +334,19 @@ $$\hat{w},\hat{b} = \arg\min_{w}||w||+C\sum_{i=1}^{N}max(0,1-y_i(w^t\mathbf{w}+b
 </section>
 
 <section style="background-color:white;color:black">
-<h1 class="blue">Arbre de décision</h1>
+<h1 class="blue">Decision Tree</h1>
 <ul>
-<li> recherche gloutone de split mono-dimensionel </br>
-<p style="text-align:center">= "information gain -> faire décroitre l'entropie"</p>
+<li> iterative greedy search of optimal one dimensional split </br>
+<p style="text-align:center">= "information gain -> decrease in entropy"</p>
 $$H(p)=-p\log(p)-(1-p)\log(1-p)$$
 $$G = H_{before}-(p_{right}.H_{right}+p_{left}.H_{left})$$
-<li> jusqu'a ce que toute les feuille soient "pures" (H=0)
+<li> until all leafs are "pure" (H=0)
 </ul>
-Remarques:
+Remarks:
 <ul>
-<li> split = partionnenement rectangulaire de l'espace
-<li> ! over-fitting -> prunning (suppression de noeud = simplification )
-  <li> prediction : vote majortaire dans la feuille
+<li> split = rectangular space partionning
+<li> prediction majoirty vote in the sample leaf 
+<li> ! over-fitting -> prunning
 </ul>
 </section>
 
@@ -390,14 +360,14 @@ Remarques:
 
 <h1>Random forest</h1>
 <ul>
-<li> construire un ensemble d'arbre (petits avec peu de #splits)</br><span class="red"> ! aussi different que possible (perturber les données)</span></br>
-et les combiner</br>
-Exemple : <ul>
-<li>sous échantilloner les données 
-<li>sous échantilloner les variables
+<li> build a set of tree (small control #splits)</br><span class="red"> ! as independant as possible (data perturbation)</span></br>
+and combine
+Example : <ul>
+<li>sample the training data 
+<li>sample the features
 </ul>
-<li> Combinaison  <span class="red">vote majoritaires</span>
-<li> Controler l'over fitting
+<li> Combination  <span class="red">majority vote</span>
+<li> Avoid over-fitting
 </ul>
 </section>
 
@@ -416,8 +386,8 @@ scores.mean()  </br>
 
 
 <section>
-	<h1>Ressources</h1>
-
+	<h1>additional materials</h1>
+Books
 
 <ul>
 	<li> <a href="https://web.stanford.edu/~hastie/ElemStatLearn/"> Element of statistical Learning </a>

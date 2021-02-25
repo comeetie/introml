@@ -31,28 +31,28 @@
 
 </head>
 <section style="text-align:center;padding-top:5em;">
-  <h1><span class="green">Introduction ML </span></h1></br> <h2><p class="grey">Master, Paris Est MLV</h2>
+  <h1><span class="green">Introduction to ML </span></h1></br> <h2><p class="grey">Master, Paris Est MLV</h2>
   <a href="http://www.twiter.com/comeetie">@comeetie</a>
 </section>
 
 <section style="text-align:center;padding-top:5em;">
-  <h1><span class="green">Apprentissage non supervisé</span></h1></br> <h2>Clustering et réduction de dimension<br> <p class="grey">Master, Paris Est-MLV</h2>
+  <h1><span class="green">Unsupervised learning</span></h1></br> <h2>Clustering and dimensionality Reduction<br> <p class="grey">Master, Paris Est-MLV</h2>
   <a href="http://www.twiter.com/comeetie">@comeetie</a>
 </section>
 
 <section style="text-align:center;padding-top:5em;">
-  <h1><span class="green">Clustering,</span></h1></br> <h2>Trouver des groupes homogènes</h2>
+  <h1><span class="green">Clustering,</span></h1></br> <h2>Find homogeneous groups</h2>
 </section>
 
 
 <section style="text-align:center;padding-top:5em;">
-  <h1><span class="green">Réduction de dimension</span></h1></br> <h2>Trouver des sous espaces intéressant pour projeter les données</h2>
+  <h1><span class="green">Dimensionality reduction</span></h1></br> <h2>Find interesting subspace to project the data</h2>
 </section>
 
 
 <section style="background-color:white;color:black">
 
-<h1 class="green" >Apprentissage non upervisé</h1>
+<h1 class="green" >Unsupervised learning</h1>
 
 
 <h3 class="red"> Clustering</h3>
@@ -63,7 +63,7 @@
 <li> DB-Scan 
 </ul>
 
-<h3 class="red"> Réduction de dimensions</h3>
+<h3 class="red"> Dimensionality reduction</h3>
 
 <ul>
 <li> ACP
@@ -77,10 +77,10 @@
 <h1 class="green" >Clustering ?</h1>
 
 
-<h3>Trouver des groupes <span class="red">"homogènes"</span></h3>
+<h3>Find <span class="red">"homogeneous"</span> groups</h3>
 
 <ul>
-<li> Données : 
+<li> Data : 
 </ul>
 $$\{\mathbf{x}_1,...,\mathbf{x}_N\}, \mathbf{x_i} \in \mathcal{R}^p$$
 
@@ -89,11 +89,10 @@ $$\{\mathbf{x}_1,...,\mathbf{x}_N\}, \mathbf{x_i} \in \mathcal{R}^p$$
 
 <h1 class="green" >Clustering ?</h1>
 
-<h3>Trouver des groupes <span class="red">"homogènes"</span></h3>
-
+<h3>Find <span class="red">"homogeneous"</span> groups</h3>
 
 <img src="./images/plot_cluster.png" height=30%>
-<h4 style="text-align:center">Exemples jouet</h4>
+<h4 style="text-align:center">Toy examples</h4>
 </section>
 
 
@@ -103,47 +102,38 @@ $$\{\mathbf{x}_1,...,\mathbf{x}_N\}, \mathbf{x_i} \in \mathcal{R}^p$$
 </section>
 
 <section style="background-color:white;color:black">
-<h1 class="blue"> Comment mesurer l'homogénéité</h1>
-Distance moyenne a un centre, variance :
+<h1 class="blue"> How to measure the homogeneity ?</h1>
+mean distance to a center, variance :
 $$\sum_{i=1}^{N}||\mathbf{x}_i-\mu||^2$$
-groupes homogènes, faibles variances autour d'un centre
+homogeneous groups, small variance around cluster centers
 $$\sum_{i=1}^N\sum_{k=1}^{K}z_{ik}||\mathbf{x}_i-\mu_k||^2$$
-avec : $\forall i\in \{1,...N\},\, z_{ik}\in\{0,1\}^K,\,\sum_{k=1}^{K}z_{ik}=1$
+with : $\forall i\in \{1,...N\},\, z_{ik}\in\{0,1\}^K,\,\sum_{k=1}^{K}z_{ik}=1$
 </section>
 
 <section style="background-color:white;color:black">
 <h1 class="blue"> K-means</h1>
-Minimisation de la variance intra-classe :
+intra-cluster variance minimization :
 $$z_1,...,z_N\,and\,\mathbf{\mu_1},...,\mathbf{\mu_K}=\arg\min\sum_{i=1}^N\sum_{k=1}^{K}z_{ik}||\mathbf{x}_i-\mu_k||^2$$
 avec : $\forall i\in \{1,...N\},\, z_{ik}\in\{0,1\}^K,\,\sum_{k=1}^{K}z_{ik}=1$
 <p>
-<h3 class="red">Problème :</h3>
-Optimlization difficile, non convex -> "local minima"
+<h3 class="red">Problem :</h3>
+Computationaly hard, non convex -> multiples "local minima"
 </p>
 </section>
 
 <section style="background-color:white;color:black">
 <h1 class="blue"> K-means</h1>
-Minimisation de la variance intra-classe :
+intra-cluster variance minimization :
 $$\arg_{z_1,...,z_N}\min_{\mathbf{\mu_1},...,\mathbf{\mu_K}}\sum_{i=1}^N\sum_{k=1}^{K}z_{ik}||\mathbf{x}_i-\mu_k||^2$$
 <h3 class="red">Solution :</h3>
-Optilmisation alternée
+Alternating opitmisation
 <ul>
-<li> Quand $z_1,...z_N$ sont fixé, facile de trouver les  $\mu_1,...,\mu_k$ optimaux (simple moyennes)
-<li> Quand les $\mu_1,...,\mu_K$ sont fixés, optimisation aisé par rapport à $z_1,...,z_N$ (trouver le centre le plus proche)
-</ul>
+<li> When $z_1,...z_N$ are fixed, it's easy to find the $\mu_1,...,\mu_k$ they are simple mean
+<li> When the $\mu_1,...,\mu_K$ are fixed, it's easy to optimize with respect to $z_1,...,z_N$ simply find the closet center for each data-point
+<h3 class="red">Iterative algorithm that converge towards a local minima</h3>
+<h3 class="red">! initialisation see k-means++</h3>
 </section>
 
-
-<section style="background-color:white;color:black">
-<h1 class="blue"> K-means</h1>
-Minimisation de la variance intra-classe :
-$$\arg_{z_1,...,z_N}\min_{\mathbf{\mu_1},...,\mathbf{\mu_K}}\sum_{i=1}^N\sum_{k=1}^{K}z_{ik}||\mathbf{x}_i-\mu_k||^2$$
-<h3 class="red">Solution :</h3>
-Optilmisation alternée
-<h3 class="red">Algorithme iteratif qui converge vers un minimum local</h3>
-<h3 class="red">! initialisation voir k-means++</h3>
-</section>
 
 
 
@@ -154,20 +144,20 @@ Optilmisation alternée
 
 <section style="background-color:white;color:black">
 <h1 class="blue"> K-means</h1>
-Minimisation de la variance intra-classe :
+intra-cluster variance minimization :
 $$\arg_{z_1,...,z_N}\min_{\mathbf{\mu_1},...,\mathbf{\mu_K}}\sum_{i=1}^N\sum_{k=1}^{K}z_{ik}||\mathbf{x}_i-\mu_k||^2$$
 <h3 class="red">Remarks : </h3>
 <ul>
-<li> Nécessite de spécifier $K$
-<li> Assume de manière implicite que les clusters forment "K" boules 
-<li> et que les groupes font approximativement la même taille
+<li> We must specify $K$
+<li> We implicit assume that cluster looks like ball around "K" centers
+<li> We implicitly assume that the groups have similar sizes
 </ul>
-<h3 class="red">! k-means -> mélange de gaussiennes et algorithme EM</h3>
+<h3 class="red">! beyond k-means mixture of gaussian and the EM algorithm</h3>
 </section>
 
 <section style="background-color:white;color:black">
 <h1 class="blue"> K-means</h1>
-<h3> avec scikit-lean </h3>
+<h3> with scikit-lean </h3>
 kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)</br>
 kmeans.fit(digits.data)</br>
 kmeans.cluster_centers_</br>
@@ -182,38 +172,38 @@ kmeans.labels_</br>
 
 
 <section style="background-color:white;color:black">
-<h1 class="green"> Comment mesurer l'homogénéité (2)</h1>
+<h1 class="green"> How to measure homogeneity (2)</h1>
 <ul>
-<li>Groupe homogène = groupes de points similaires
-<li>2 points sont similaires s'ils sont proches 
-<li>2 groupes de points $(C_1,C_2)$ sont similaires si ?
+<li>Homogeneous groups = groups of similar points
+<li>2 points are similar if they are closes 
+<li>2 groups of points  $(C_1,C_2)$ are similar if ?
 </ul>
-La distance maximale entre deux de leurs membres est faible :
+The maximum distance between two members of the groups is small:
 $$ max_{i \in C_1,j\in C_2}||x_i-x_j||^2$$
 <h3 class="green">Maximal link</h3>
 </section>
 
 
 <section style="background-color:white;color:black">
-<h1 class="green"> Comment mesurer l'homogénéité (2)</h1>
+<h1 class="green"> How to measure homogeneity (2)</h1>
 <ul>
-<li>Groupe homogène = groupes de points similaires
-<li>2 points sont similaires s'ils sont proches 
-<li>2 groupes de points $(C_1,C_2)$ sont similaires si ?
+<li>Homogeneous groups = groups of similar points
+<li>2 points are similar if they are closes 
+<li>2 groups of points  $(C_1,C_2)$ are similar if ?
 </ul>
-La distance minimale entre deux de leurs membres est faible :
+The minimum distance between two members of the groups is small:
 $$ min_{i \in C_1,j\in C_2}||x_i-x_j||^2$$
 <h3 class="green">Minimal link</h3>
 </section>
 
 <section style="background-color:white;color:black">
-<h1 class="green"> Comment mesurer l'homogénéité (2)</h1>
+<h1 class="green"> How to measure homogeneity (2)</h1>
 <ul>
-<li>Groupe homogène = groupes de points similaires
-<li>2 points sont similaires s'ils sont proches 
-<li>2 groupes de points $(C_1,C_2)$ sont similaires si ?
+<li>Homogeneous groups = groups of similar points
+<li>2 points are similar if they are closes 
+<li>2 groups of points  $(C_1,C_2)$ are similar if ?
 </ul>
-La distance moyenne entre deux de leurs membres est faible :
+The average distance between two members of the groups is small:
 $$ \frac{1}{N_{C_1}N_{C_2}}\sum_{i \in C_1}\sum_{j\in C_2}||x_i-x_j||^2$$
 <h3 class="green">Average link</h3>
 </section>
@@ -221,50 +211,50 @@ $$ \frac{1}{N_{C_1}N_{C_2}}\sum_{i \in C_1}\sum_{j\in C_2}||x_i-x_j||^2$$
 
 
 <section style="background-color:white;color:black">
-<h1 class="green"> Comment mesurer l'homogénéité (2)</h1>
+<h1 class="green"> How to measure homogeneity (2)</h1>
 <ul>
-<li>Groupe homogène = groupes de points similaires
-<li>2 points sont similaires s'ils sont proches 
-<li>2 groupes de points $(C_1,C_2)$ sont similaires si ?
+<li>Homogeneous groups = groups of similar points
+<li>2 points are similar if they are closes 
+<li>2 groups of points  $(C_1,C_2)$ are similar if ?
 </ul>
-La distance pondérées entre leurs moyenne est faible :
+The wheighted distance between their centers is small:
 $$ \frac{N_{C_1}N_{C_2}}{N_{C_1}+N_{C_2}}||\mu_{C_1}-\mu_{C_2}||^2$$
 <h3 class="green">Ward</h3>
 </section>
 
 
 <section style="background-color:white;color:black">
-<h1 class="green">HC algorithme</h1>
+<h1 class="green">HC algorithm</h1>
 <ul>
-<li> Mettre un chaque point dans un clusters
-<li> fusioner les deux clusters les plus proches (au sens de la fonction de lien choisie)  
-<li> jusqu'à n'obtennir qu'unb seul cluster
-<li> construire l'abre de fusion binaire (fusions + coûts de fusion; i.e dendogram) 
-<li> couper le dendograme pour obtenir un clustering plat
+<li> Put each data point into a cluster
+<li> merge the two closest clusters (with respect to the link function)  
+<li> until you end up with a unique clsuer with all data-points inside
+<li> Build the binary tree that store the merge moves and their costs (dendogram) 
+<li> (optional) Cut the tree at a certain level to obtain a flat clustering
 </ul>
 </section>
 
 
 <section style="background-color:white;color:black">
-<h1 class="green"> HC exemple</h1>
+<h1 class="green"> HC example</h1>
 <h1 style="text-align:center;padding-top:3em"><a href="./agglo.html">"./agglo.html"</a> </h1>
 </section>
 
 <section style="background-color:white;color:black">
 <h1 class="green">HC</h1>
-Optimisation greedy des fusions
-<h3 class="red">Remarques : </h3>
+Greedy optimisation of merge
+<h3 class="red">Remarks : </h3>
 <ul>
-<li> $K$ n'est pas fixé a priori et le dendograme peut aider à le déterminer
-<li> choix de la distance (fonction de lien) importante
-<li> Pas d'hypothèses explicite sur la forme des groupes
+<li> No need to fix $K$ a priori but use the dendogram to fix it
+<li> Choice of the distance between cluster is important and has a clear impact on the results
+<li> No strong hypothesis on the groups shapes
 </ul>
 </section>
 
 
 <section style="background-color:white;color:black">
 <h1 class="blue"> HC</h1>
-<h3> avec scikit-lean </h3>
+<h3> with scikit-lean </h3>
 cah = AgglomerativeClustering(linkage="ward",n_clusters=10)</br>
 cah.fit_predict(digits.data)</br>
 cah.labels_</br>
@@ -276,37 +266,37 @@ cah.labels_</br>
 </section>
 
 <section style="background-color:white;color:black">
-<h1 class="green"> Comment mesurer l'homogénéité (3)</h1>
+<h1 class="red"> How to measure homogeneity (3)</h1>
 <ul>
-<li>homogène =  dans la même zone de forte densité
+<li>homogeneous = in the same high density area
 </ul>
-<h3 class="green">Densité ~ nombre de point par unité de surface</h3>
+<h3 class="green">Density ~ number of data-point per surface area</h3>
 </section>
 
 
 <section style="background-color:white;color:black">
-<h1 class="green"> Comment mesurer l'homogénéité (3)</h1>
+<h1 class="red"> How to measure homogeneity (3)</h1>
 <ul>
-<li>homogène =  dans la même zone de forte densité
+<li>homogeneous = in the same high density area
 </ul>
-<h3 class="green">Densité ~ nombre de point par unité de surface</h3>
-mesure locale de la densité $\xi(\mathbf{x},\epsilon) = \sum_{i=1}^{N}1_{\{||\mathbf{x}-\mathbf{x}_i\||^2<\epsilon\}}$
+<h3 class="green">Density ~ number of data-point per surface area</h3>
+local measure of the density $\xi(\mathbf{x},\epsilon) = \sum_{i=1}^{N}1_{\{||\mathbf{x}-\mathbf{x}_i\||^2<\epsilon\}}$
 <ul>
-<li>Haute densité :
+<li>High density :
  $$\xi(\mathbf{x},\epsilon) > minpts $$
-<li>$i,j$ <span class="red">appartienent à la même zone de forte densité </span> =<span class="red"> ils appartiennent au même clusters </span> si :
-<p>il existe un chemin entre $i$ et $j$ qui reste dans la zone</p>
+<li>$i,j$ <span class="red">belong to the same high density area</span> =<span class="red"> they belong to the same cluster</span> if :
+<p>their is a path between $i$ and $j$ along wich the density is always high</p>
 </ul>
 </section>
 
 
 
 <section style="background-color:white;color:black">
-<h1 class="green"> Comment mesurer l'homogénéité (3)</h1>
+<h1 class="red"> How to measure homogeneity (3)</h1>
 <ul>
-<li>homogène =  dans la même zone de forte densité
-<li>$i,j$ <span class="red">appartienent à la même zone de forte densité </span> =<span class="red"> ils appartiennent au même clusters </span> si :
-<p>il existe un chemin entre $i$ et $j$ qui reste dans la zone</p>
+<li>homogeneous = in the same high density area
+<li>$i,j$ <span class="red">belong to the same high density area</span> =<span class="red"> they belong to the same cluster</span> if :
+<p>their is a path between $i$ and $j$ along wich the density is always high</p>
 </ul>
 <img src="./images/dbscan.png" height="60%"></img>
 </section>
@@ -314,7 +304,7 @@ mesure locale de la densité $\xi(\mathbf{x},\epsilon) = \sum_{i=1}^{N}1_{\{||\m
 
 <section style="background-color:white;color:black">
 <h1 class="red">DBSCAN </h1>
-parametètres :$\epsilon, minpts$</br>
+parameters :$\epsilon, minpts$</br>
 nbcluster = 0
 <ul>
 <li> For each $\mathbf{x_i}$ :
@@ -341,7 +331,7 @@ expand($\mathbf{x}_i$,nbcluster)</br>
 <ul>
 <li> Flag $\mathbf{x_j}$ as visited
 <li> If $\xi(\mathbf{x}_j,\epsilon)>minpts$ </br>
-$$Neirghbours = Neighbours \cup \{\mathbf{x}_l :\, ||\mathbf{x}_l-\mathbf{x}_j||^2<\epsilon\}$$ 
+$$Neirghbors = Neighbours \cup \{\mathbf{x}_l :\, ||\mathbf{x}_l-\mathbf{x}_j||^2<\epsilon\}$$ 
 <li> If $\mathbf{x}_j$ do not belong to any cluster $c_j=nbcluster$
 </section>
 
@@ -350,11 +340,12 @@ $$Neirghbours = Neighbours \cup \{\mathbf{x}_l :\, ||\mathbf{x}_l-\mathbf{x}_j||
 
 <section style="background-color:white;color:black">
 <h1 class="red">DBSCAN</h1>
-<h3 style="padding-top:3em">Remarques</h3>
+<h3 style="padding-top:3em">Remarks</h3>
 <ul>
-<li> Pas d'hypothèses sur la forme des clusters
-<li> 2 paramètres (analysé la répartition des distances entre points proches)
-<li> Extrait un cluster de bruit 
+<li> Based on local density (no hypothesis on cluster shapes)
+<li> 2 parameters 
+<li> Extract a noise cluster 
+<li> Quite speed
 <ul> 
 </section>
 
@@ -362,25 +353,25 @@ $$Neirghbours = Neighbours \cup \{\mathbf{x}_l :\, ||\mathbf{x}_l-\mathbf{x}_j||
 
 <section style="background-color:white;color:black">
 <h1 class="blue">DB-scan</h1>
-<h3> avec scikit-lean </h3>
+<h3> with scikit-lean </h3>
 db = DBSCAN(eps=25,min_samples=40)</br>
 db.fit_predict(digits.data)</br>
 db.labels_
 </section>
 
 <section style="background-color:white;color:black">
-<h1 class="green">Clustering, remarques génréales:</h1>
-<h3><span class="red">!! Attention quand les variables sont dans des unités &ne; !!<span></h3>
+<h1 class="green">Clustering, general remarks :</h1>
+<h3><span class="red">!! Warning when features have &ne; units !!<span></h3>
 <ul>
-<li>! preprocessing : centrage -réduction </span>
+<li>! preprocessing : centering - reduction </span>
 $$\tilde{\mathbf{x}}=(\mathbf{x}-\bar{\mathbf{x}}).\mathbf{S}^{-1}$$
-<li>soustraire la moyenne (centering : mean =0),
-<li>divisé par l'écart type (reduction : variance=1) 
-<li> normalisation $[0,1]$ soustraire le min diviser par le range.
+<li>substraction of the mean (centering : mean =0),
+<li>divide by the standard deviation (reduction : variance=1) 
+<li> normalisation $[0,1]$ substract the min divide by the range.
 </ul>
-<h3><span class="red">!! effet taille & collinearité !!<span></h3>
+<h3><span class="red">!! size effect & collinearity !!<span></h3>
 <ul>
-<li>diviser par une variable corrélée à la taille, ex : population
+<li>divide by the size "feature" , ex : population
 <ul> 
 </section>
 

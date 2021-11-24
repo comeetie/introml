@@ -65,7 +65,7 @@ Find a function $f$ : such that $f(x) \sim y$ to predict $y$ for new $x$</br>
 Data :
 $$\{(\mathbf{x}_1,y_1),...,(\mathbf{x}_N,y_N)\}, \mathbf{x_i} \in \mathcal{R}^p,\,y_i \in \mathbb{R}$$
 
-<h3 class="red">Objectif : </h3>
+<h3 class="red">Goal : </h3>
 
 Find $f$ : $f(x) \sim y$ to predict $y\in\mathcal{R}$ for new values of $x$</br>
 <span class="green">Example : </span> y=electrical consumption, x=houseold information, house description, meteo,calendar information
@@ -144,11 +144,13 @@ $f(\mathbf{x})=f(\mathbf{x},\color{red}{\mathbf{w}})$ may be more or less comple
 
 
 <section style="background-color:white;color:black">
-<h1 class="green" >Classification supervisé</h1>
-<h3> Trainning data / Test data</h3>
+<h1 class="green" ></h1>
+<h3> Trainning data / Test  / Validation data</h3>
 <ul>
 <li> unbiased estimator of generalisation error $\sim 70\%$ (Training), $\sim 30\%$ (Test)
 <li> Try to estimate the generalisation error
+<li> Validation set (choose algo + hyper parameters)
+<li> Test set final evaluation of the chosen model
 </ul>
 <h3 class="red">Cross validation: </h3>
 <ul> 
@@ -162,7 +164,7 @@ $f(\mathbf{x})=f(\mathbf{x},\color{red}{\mathbf{w}})$ may be more or less comple
 
 <section style="background-color:white;color:black">
 
-<h1 class="green" >Classification, </h1>
+<h1 class="green" >Classification </h1>
 how to measure the performance of $f$
 <h4>Confusion matrix</h4>
 $$C_{kl}\, = \#(y_i=c_k \cap \hat{f}(\mathbf{x}_i)=c_l)$$
@@ -172,7 +174,7 @@ $$C_{kl}\, = \#(y_i=c_k \cap \hat{f}(\mathbf{x}_i)=c_l)$$
 
 <section style="background-color:white;color:black">
 
-<h1 class="green" >Classification,</h1>
+<h1 class="green" >Classification</h1>
  how to measure the performance of $f$
 <h4>Confusion matrix</h4>
 $$C_{kl}\, = \#(y_i=c_k \cap \hat{f}(\mathbf{x}_i)=c_l)$$
@@ -208,11 +210,11 @@ To predict the class of a new point $\mathbf{x}$:
 </section>
 
 <section style="padding-top:5em;text-align:center">
-<h1>Regression logistic</h1>
+<h1>Logistic Regression</h1>
 </section>
 
 <section style="background-color:white;color:black">
-<h1 class="blue">Regression logistic</h1>
+<h1 class="blue">Logistic Regression </h1>
 $$P(y=c_k|\mathbf{x})=\frac{exp(\beta_k^{t}\mathbf{x})}{\sum_{h=1}^{K}exp(\beta_h^{t}\mathbf{x})}$$
 <ul>
 <li>Learning = find the $\beta$ by maximum likelihood
@@ -312,8 +314,8 @@ $$\hat{w},\hat{b} = \arg\min_{w}||w||+C\sum_{i=1}^{N}max(0,1-y_i(w^t\mathbf{w}+b
 <h1 class="blue">SVM</h1>
 <h3> Kernel</h3>
 <ul>
-<li> Kernel = do ptoduct but in a different space
-<li> non linear trabsformation
+<li> Kernel = dotproduct but in a different space
+<li> non linear transformation
 <li> classical kernel = gaussian kernel </br>
 (dot product in an infinite space !)
 </ul>
